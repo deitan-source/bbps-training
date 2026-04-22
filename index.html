@@ -22,274 +22,184 @@
       --eligible:  #dc2626;
       --not-eligible:#16a34a;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--off-white); color: #1f2937; min-height: 100vh; }
 
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--off-white);
-      color: #1f2937;
-      min-height: 100vh;
+    /* ─── REGISTRATION SCREEN ─── */
+    #registration-screen {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 60%, var(--blue-light) 100%);
+      padding: 24px;
     }
+    .reg-card {
+      background: white; border-radius: 20px; padding: 48px 40px;
+      width: 100%; max-width: 480px; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    .reg-logo {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 32px;
+    }
+    .reg-logo-badge {
+      background: var(--blue-dark); color: white; font-weight: 700;
+      font-size: 12px; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.5px;
+    }
+    .reg-logo-title { font-size: 13px; color: var(--gray); font-weight: 500; }
+    .reg-card h2 { font-size: 26px; font-weight: 800; color: var(--blue-dark); margin-bottom: 8px; }
+    .reg-card .reg-sub { font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 28px; }
+    .reg-field { margin-bottom: 16px; }
+    .reg-field label { display: block; font-size: 13px; font-weight: 600; color: var(--blue-dark); margin-bottom: 6px; }
+    .reg-field input {
+      width: 100%; padding: 12px 14px; border: 2px solid var(--gray-light);
+      border-radius: 8px; font-size: 15px; color: var(--blue-dark);
+      transition: border-color 0.15s; outline: none;
+    }
+    .reg-field input:focus { border-color: var(--teal); }
+    .reg-field input.error { border-color: var(--score0); }
+    .reg-error { font-size: 12px; color: var(--score0); margin-top: 4px; display: none; }
+    .btn-reg {
+      width: 100%; background: var(--blue-dark); color: white;
+      border: none; padding: 14px; border-radius: 8px;
+      font-size: 16px; font-weight: 700; cursor: pointer;
+      margin-top: 8px; transition: background 0.15s;
+    }
+    .btn-reg:hover { background: var(--blue-mid); }
+    .reg-note {
+      margin-top: 20px; padding: 12px 14px; background: #fef3c7;
+      border: 1px solid #fde68a; border-radius: 8px;
+      font-size: 13px; color: #92400e; line-height: 1.6;
+    }
+
+    /* ─── MAIN APP ─── */
+    #main-app { display: none; }
 
     /* ─── TOP PROGRESS BAR ─── */
-    #progress-bar-wrap {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 5px; background: var(--gray-light);
-    }
-    #progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--teal), var(--blue-light));
-      transition: width 0.4s ease;
-      width: 0%;
-    }
+    #progress-bar-wrap { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 5px; background: var(--gray-light); }
+    #progress-bar { height: 100%; background: linear-gradient(90deg, var(--teal), var(--blue-light)); transition: width 0.4s ease; width: 0%; }
 
     /* ─── HEADER ─── */
     header {
-      background: var(--blue-dark);
-      color: white;
-      padding: 14px 32px;
-      position: fixed; top: 5px; left: 0; right: 0; z-index: 99;
+      background: var(--blue-dark); color: white;
+      padding: 14px 32px; position: fixed; top: 5px; left: 0; right: 0; z-index: 99;
       display: flex; align-items: center; justify-content: space-between;
     }
-    header .logo {
-      display: flex; align-items: center; gap: 12px;
-    }
-    header .logo-badge {
-      background: var(--teal);
-      color: white; font-weight: 700; font-size: 13px;
-      padding: 4px 10px; border-radius: 4px; letter-spacing: 0.5px;
-    }
-    header .logo-title {
-      font-size: 15px; font-weight: 600; opacity: 0.92;
-    }
-    #timer-display {
-      font-size: 13px; color: rgba(255,255,255,0.75);
-      font-variant-numeric: tabular-nums;
-    }
+    header .logo { display: flex; align-items: center; gap: 12px; }
+    header .logo-badge { background: var(--teal); color: white; font-weight: 700; font-size: 13px; padding: 4px 10px; border-radius: 4px; }
+    header .logo-title { font-size: 15px; font-weight: 600; opacity: 0.92; }
+    #header-name { font-size: 13px; color: rgba(255,255,255,0.7); }
+    #header-name span { color: white; font-weight: 600; }
+    #timer-display { font-size: 13px; color: rgba(255,255,255,0.75); font-variant-numeric: tabular-nums; }
     #timer-display span { color: var(--teal); font-weight: 700; }
 
     /* ─── MAIN CONTAINER ─── */
-    #app {
-      padding-top: 75px;
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center;
-    }
+    #app { padding-top: 75px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
 
-    /* ─── SLIDE WRAPPER ─── */
-    .slide {
-      display: none;
-      width: 100%; max-width: 900px;
-      padding: 40px 24px 80px;
-      animation: fadeIn 0.35s ease;
-    }
+    /* ─── SLIDES ─── */
+    .slide { display: none; width: 100%; max-width: 900px; padding: 40px 24px 80px; animation: fadeIn 0.35s ease; }
     .slide.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ─── SLIDE ELEMENTS ─── */
-    .slide-tag {
-      display: inline-block; font-size: 11px; font-weight: 700;
-      letter-spacing: 1.2px; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 10px;
-    }
+    .slide-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
     h1 { font-size: 32px; font-weight: 800; color: var(--blue-dark); line-height: 1.2; margin-bottom: 6px; }
     h2 { font-size: 24px; font-weight: 700; color: var(--blue-dark); margin-bottom: 16px; }
     .lead { font-size: 16px; color: var(--gray); line-height: 1.7; margin-bottom: 24px; }
     .divider { width: 48px; height: 4px; background: var(--teal); border-radius: 2px; margin-bottom: 28px; }
 
-    /* ─── CARDS ─── */
-    .card {
-      background: white; border-radius: 12px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-      padding: 24px; margin-bottom: 16px;
-    }
-    .card-grid {
-      display: grid; gap: 16px;
-    }
-    .card-grid-2 { grid-template-columns: 1fr 1fr; }
-    .card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
-    @media(max-width:640px) {
-      .card-grid-2, .card-grid-3 { grid-template-columns: 1fr; }
-    }
+    .card { background: white; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 24px; margin-bottom: 16px; }
 
-    /* ─── INTRO SLIDE ─── */
+    /* ─── INTRO ─── */
     .intro-hero {
       background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 60%, var(--blue-light) 100%);
-      border-radius: 20px; padding: 60px 48px;
-      color: white; text-align: center; margin-bottom: 32px;
+      border-radius: 20px; padding: 60px 48px; color: white; text-align: center; margin-bottom: 32px;
     }
     .intro-hero h1 { color: white; font-size: 38px; margin-bottom: 12px; }
     .intro-hero .sub { color: rgba(255,255,255,0.75); font-size: 17px; margin-bottom: 32px; }
-    .intro-meta {
-      display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
-      margin-bottom: 36px;
-    }
+    .intro-meta { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 36px; }
     .intro-meta-item { text-align: center; }
     .intro-meta-item .num { font-size: 30px; font-weight: 800; color: var(--teal); }
     .intro-meta-item .lbl { font-size: 12px; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.8px; }
-    .btn-start {
-      background: var(--teal); color: white;
-      border: none; padding: 16px 40px; border-radius: 8px;
-      font-size: 16px; font-weight: 700; cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
-      letter-spacing: 0.3px;
-    }
+    .btn-start { background: var(--teal); color: white; border: none; padding: 16px 40px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.1s; }
     .btn-start:hover { background: #008f7e; transform: translateY(-1px); }
 
-    /* ─── SCORE BADGE ─── */
-    .score-badge {
-      width: 56px; height: 56px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 26px; font-weight: 900; color: white;
-      margin-bottom: 14px; flex-shrink: 0;
-    }
+    /* ─── SCORE LAYOUT ─── */
+    .score-badge { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 900; color: white; margin-bottom: 14px; flex-shrink: 0; }
     .score-badge.s0 { background: var(--score0); }
     .score-badge.s1 { background: var(--score1); }
     .score-badge.s2 { background: var(--score2); }
     .score-badge.s3 { background: var(--score3); }
-
-    /* ─── SCORE DETAIL SLIDE ─── */
-    .score-layout {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;
-    }
+    .score-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
     @media(max-width:640px) { .score-layout { grid-template-columns: 1fr; } }
     .score-info { display: flex; flex-direction: column; gap: 16px; }
     .score-header { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
     .score-title h2 { margin-bottom: 2px; }
-    .score-title .definition-label {
-      font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); font-weight: 600;
-    }
-    .score-definition {
-      background: var(--off-white); border-left: 4px solid currentColor;
-      border-radius: 0 8px 8px 0; padding: 14px 16px;
-      font-size: 14px; line-height: 1.7; color: #374151;
-    }
+    .score-title .definition-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); font-weight: 600; }
+    .score-definition { background: var(--off-white); border-left: 4px solid currentColor; border-radius: 0 8px 8px 0; padding: 14px 16px; font-size: 14px; line-height: 1.7; color: #374151; }
     .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .checklist li {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-size: 14px; color: #374151;
-    }
-    .checklist li::before {
-      content: '✓'; font-weight: 700; flex-shrink: 0; margin-top: 1px;
-    }
+    .checklist li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #374151; }
+    .checklist li::before { content: '✓'; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
     .checklist li.no::before { content: '✗'; }
-
-    .eligibility-banner {
-      border-radius: 8px; padding: 12px 16px;
-      font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 10px;
-    }
+    .eligibility-banner { border-radius: 8px; padding: 12px 16px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
     .eligibility-banner.eligible { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
     .eligibility-banner.not-eligible { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .score-image-wrap { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.12); background: #1a1a1a; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; }
+    .score-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .img-fallback { display: none; color: rgba(255,255,255,0.4); font-size: 13px; text-align: center; padding: 20px; }
+    .image-caption { margin-top: 8px; font-size: 11px; color: var(--gray); text-align: center; line-height: 1.4; }
 
-    .score-image-wrap {
-      border-radius: 12px; overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-      background: #1a1a1a;
-      aspect-ratio: 4/3;
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-    }
-    .score-image-wrap img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-    }
-    .score-image-wrap .img-fallback {
-      display: none; color: rgba(255,255,255,0.4); font-size: 13px; text-align: center; padding: 20px;
-    }
-    .image-caption {
-      margin-top: 8px; font-size: 11px; color: var(--gray); text-align: center;
-      line-height: 1.4;
-    }
-
-    /* ─── COMPARISON GRID ─── */
-    .comparison-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
-    }
+    /* ─── COMPARISON ─── */
+    .comparison-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
     @media(max-width:700px) { .comparison-grid { grid-template-columns: repeat(2, 1fr); } }
-    .comparison-card {
-      background: white; border-radius: 10px; overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    }
-    .comparison-card .comp-img {
-      aspect-ratio: 1; background: #111;
-      display: flex; align-items: center; justify-content: center; overflow: hidden;
-    }
+    .comparison-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+    .comparison-card .comp-img { aspect-ratio: 1; background: #111; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .comparison-card .comp-img img { width: 100%; height: 100%; object-fit: cover; }
     .comparison-card .comp-body { padding: 10px; }
     .comp-score-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
-    .comp-score-num {
-      width: 26px; height: 26px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 800; color: white; flex-shrink: 0;
-    }
+    .comp-score-num { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: white; flex-shrink: 0; }
     .comp-score-name { font-size: 12px; font-weight: 700; color: var(--blue-dark); }
     .comp-desc { font-size: 11px; color: var(--gray); line-height: 1.45; }
-    .comp-elig {
-      margin-top: 6px; padding: 4px 8px; border-radius: 4px;
-      font-size: 10px; font-weight: 700; text-align: center; letter-spacing: 0.3px;
-    }
+    .comp-elig { margin-top: 6px; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; text-align: center; }
     .comp-elig.yes { background: #fee2e2; color: #991b1b; }
     .comp-elig.no  { background: #dcfce7; color: #166534; }
 
     /* ─── WORKFLOW ─── */
-    .workflow-steps { display: flex; flex-direction: column; gap: 0; }
-    .workflow-step {
-      display: flex; gap: 20px; align-items: flex-start; position: relative;
-      padding-bottom: 28px;
-    }
+    .workflow-step { display: flex; gap: 20px; align-items: flex-start; position: relative; padding-bottom: 28px; }
     .workflow-step:last-child { padding-bottom: 0; }
-    .step-line {
-      position: absolute; left: 18px; top: 40px; bottom: 0;
-      width: 2px; background: var(--gray-light);
-    }
+    .step-line { position: absolute; left: 18px; top: 40px; bottom: 0; width: 2px; background: var(--gray-light); }
     .workflow-step:last-child .step-line { display: none; }
-    .step-num {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: var(--blue-dark); color: white;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 15px; flex-shrink: 0; position: relative; z-index: 1;
-    }
+    .step-num { width: 38px; height: 38px; border-radius: 50%; background: var(--blue-dark); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex-shrink: 0; position: relative; z-index: 1; }
     .step-content h3 { font-size: 16px; color: var(--blue-dark); margin-bottom: 4px; }
     .step-content p  { font-size: 14px; color: var(--gray); line-height: 1.6; }
-    .step-highlight {
-      margin-top: 8px; background: #fef3c7; border: 1px solid #fde68a;
-      border-radius: 6px; padding: 8px 12px;
-      font-size: 13px; color: #92400e; font-weight: 500;
-    }
+    .step-highlight { margin-top: 8px; background: #fef3c7; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; font-size: 13px; color: #92400e; font-weight: 500; }
 
-    /* ─── QUICK REF TABLE ─── */
+    /* ─── TABLE ─── */
     .qr-table { width: 100%; border-collapse: collapse; }
     .qr-table th, .qr-table td { padding: 12px 16px; text-align: left; font-size: 14px; }
     .qr-table th { background: var(--blue-dark); color: white; font-weight: 600; font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
     .qr-table tr:nth-child(even) td { background: var(--off-white); }
-    .qr-table tr:hover td { background: var(--teal-light); }
-    .score-pill {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 28px; height: 28px; border-radius: 50%;
-      font-weight: 700; font-size: 14px; color: white;
-    }
+    .score-pill { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; font-weight: 700; font-size: 14px; color: white; }
 
-    /* ─── KEY MESSAGES ─── */
-    .key-card {
-      display: flex; gap: 20px; align-items: flex-start;
-      background: white; border-radius: 12px; padding: 20px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    }
-    .key-num {
-      background: var(--blue-dark); color: white;
-      width: 36px; height: 36px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 15px; flex-shrink: 0;
-    }
+    /* ─── KEY CARDS ─── */
+    .key-card { display: flex; gap: 20px; align-items: flex-start; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .key-num { background: var(--blue-dark); color: white; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex-shrink: 0; }
     .key-card h3 { font-size: 15px; color: var(--blue-dark); margin-bottom: 4px; }
     .key-card p  { font-size: 14px; color: var(--gray); line-height: 1.6; }
 
-    /* ─── NAV BUTTONS ─── */
-    .nav-bar {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      background: white; border-top: 1px solid var(--gray-light);
-      padding: 14px 32px; display: flex; align-items: center; justify-content: space-between;
-      z-index: 98;
-    }
+    /* ─── INFO BLOCKS ─── */
+    .info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media(max-width:560px){ .info-row { grid-template-columns: 1fr; } }
+    .info-block { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .info-block h3 { font-size: 14px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
+    .info-block p, .info-block li { font-size: 13px; color: #374151; line-height: 1.65; }
+    .info-block ul { padding-left: 16px; }
+    .segments-diagram { background: white; border-radius: 14px; padding: 28px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .seg-block { flex: 1; text-align: center; padding: 20px 12px; border-right: 2px dashed var(--gray-light); }
+    .seg-block:last-child { border-right: none; }
+    .seg-icon { font-size: 32px; margin-bottom: 8px; }
+    .seg-name { font-weight: 700; font-size: 14px; color: var(--blue-dark); margin-bottom: 4px; }
+    .seg-sub  { font-size: 11px; color: var(--gray); }
+    .seg-score { margin-top: 10px; }
+    .seg-score span { display: inline-block; background: var(--blue-dark); color: white; border-radius: 4px; font-size: 11px; font-weight: 700; padding: 3px 8px; }
+
+    /* ─── NAV BAR ─── */
+    .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid var(--gray-light); padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; z-index: 98; }
     .nav-slide-info { font-size: 13px; color: var(--gray); }
     .nav-buttons { display: flex; gap: 10px; }
     .btn { padding: 10px 24px; border-radius: 7px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: all 0.15s; }
@@ -306,21 +216,10 @@
     .quiz-counter { font-size: 13px; color: var(--gray); margin-bottom: 8px; }
     .quiz-progress-wrap { background: var(--gray-light); border-radius: 4px; height: 6px; margin: 12px 0 24px; }
     .quiz-progress-fill { height: 100%; background: var(--teal); border-radius: 4px; transition: width 0.3s; }
-    .quiz-q { font-size: 18px; font-weight: 700; color: var(--blue-dark); line-height: 1.5; margin-bottom: 28px; text-align: left; }
+    .quiz-q { font-size: 18px; font-weight: 700; color: var(--blue-dark); line-height: 1.5; margin-bottom: 28px; }
     .quiz-options { display: flex; flex-direction: column; gap: 12px; }
-    .quiz-opt {
-      background: white; border: 2px solid var(--gray-light);
-      border-radius: 10px; padding: 16px 20px;
-      font-size: 15px; cursor: pointer; text-align: left;
-      transition: all 0.15s; display: flex; align-items: flex-start; gap: 12px; line-height: 1.5;
-    }
-    .quiz-opt .opt-letter {
-      width: 26px; height: 26px; border-radius: 50%;
-      background: var(--off-white); border: 2px solid var(--gray-light);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 700; color: var(--gray);
-      flex-shrink: 0; margin-top: 1px; transition: all 0.15s;
-    }
+    .quiz-opt { background: white; border: 2px solid var(--gray-light); border-radius: 10px; padding: 16px 20px; font-size: 15px; cursor: pointer; text-align: left; transition: all 0.15s; display: flex; align-items: flex-start; gap: 12px; line-height: 1.5; }
+    .quiz-opt .opt-letter { width: 26px; height: 26px; border-radius: 50%; background: var(--off-white); border: 2px solid var(--gray-light); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--gray); flex-shrink: 0; margin-top: 1px; transition: all 0.15s; }
     .quiz-opt:hover:not(.locked) { border-color: var(--blue-light); background: #f0f6ff; }
     .quiz-opt:hover:not(.locked) .opt-letter { border-color: var(--blue-light); color: var(--blue-light); background: #dbeafe; }
     .quiz-opt.correct { border-color: var(--score3); background: #f0fdf4; }
@@ -328,809 +227,424 @@
     .quiz-opt.wrong { border-color: var(--score0); background: #fff5f5; }
     .quiz-opt.wrong .opt-letter { background: var(--score0); border-color: var(--score0); color: white; }
     .quiz-opt.locked { cursor: default; }
-    .quiz-feedback {
-      margin-top: 20px; padding: 14px 18px; border-radius: 8px;
-      font-size: 14px; line-height: 1.6; display: none;
-    }
+    .quiz-feedback { margin-top: 20px; padding: 14px 18px; border-radius: 8px; font-size: 14px; line-height: 1.6; display: none; }
     .quiz-feedback.show { display: block; }
     .quiz-feedback.correct { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
     .quiz-feedback.wrong   { background: #fff5f5; border: 1px solid #fecaca; color: #991b1b; }
-    .btn-next-q {
-      margin-top: 20px; display: none;
-      background: var(--blue-dark); color: white;
-      border: none; padding: 12px 28px; border-radius: 7px;
-      font-size: 15px; font-weight: 600; cursor: pointer;
-      transition: background 0.15s;
-    }
+    .btn-next-q { margin-top: 20px; display: none; background: var(--blue-dark); color: white; border: none; padding: 12px 28px; border-radius: 7px; font-size: 15px; font-weight: 600; cursor: pointer; }
     .btn-next-q:hover { background: var(--blue-mid); }
     .btn-next-q.show { display: inline-block; }
 
+    /* ─── 10/10 REQUIREMENT BANNER ─── */
+    .perfect-score-notice {
+      background: linear-gradient(135deg, #1e3a5f, #0a2342);
+      border-radius: 12px; padding: 20px 24px; margin-bottom: 24px;
+      display: flex; align-items: flex-start; gap: 16px; color: white;
+    }
+    .perfect-score-notice .psn-icon { font-size: 28px; flex-shrink: 0; }
+    .perfect-score-notice h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .perfect-score-notice p  { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
     /* ─── RESULTS ─── */
     .results-wrap { text-align: center; }
-    .results-circle {
-      width: 140px; height: 140px; border-radius: 50%;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      margin: 0 auto 24px;
-      border: 6px solid;
-    }
+    .results-circle { width: 140px; height: 140px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 24px; border: 6px solid; }
     .results-circle .big { font-size: 42px; font-weight: 900; }
     .results-circle .small { font-size: 14px; font-weight: 600; opacity: 0.75; }
     .results-circle.pass { border-color: var(--score3); color: var(--score3); }
     .results-circle.fail { border-color: var(--score0); color: var(--score0); }
     .results-message { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-    .results-sub { font-size: 15px; color: var(--gray); margin-bottom: 32px; line-height: 1.6; }
-    .results-breakdown {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px;
-      text-align: left; margin-bottom: 32px;
-    }
-    .rb-item {
-      background: white; border-radius: 8px; padding: 12px 16px;
-      font-size: 13px; display: flex; align-items: center; gap: 12px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.07);
-    }
+    .results-sub { font-size: 15px; color: var(--gray); margin-bottom: 28px; line-height: 1.6; }
+    .results-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; text-align: left; margin-bottom: 28px; }
+    .rb-item { background: white; border-radius: 8px; padding: 12px 16px; font-size: 13px; display: flex; align-items: center; gap: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.07); }
     .rb-icon { font-size: 18px; flex-shrink: 0; }
     .rb-q { font-weight: 500; color: #374151; flex: 1; }
-    .btn-restart {
-      background: var(--blue-dark); color: white;
-      border: none; padding: 14px 36px; border-radius: 8px;
-      font-size: 15px; font-weight: 700; cursor: pointer; margin-right: 10px;
-    }
-    .btn-restart:hover { background: var(--blue-mid); }
-    .btn-retake {
-      background: var(--off-white); color: var(--blue-dark);
-      border: 2px solid var(--gray-light); padding: 14px 36px; border-radius: 8px;
-      font-size: 15px; font-weight: 700; cursor: pointer;
-    }
-    .btn-retake:hover { background: var(--gray-light); }
+    .btn-retake { background: var(--blue-dark); color: white; border: none; padding: 14px 36px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; }
+    .btn-retake:hover { background: var(--blue-mid); }
+    .btn-review { background: var(--off-white); color: var(--blue-dark); border: 2px solid var(--gray-light); padding: 14px 36px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; margin-right: 10px; }
+    .btn-review:hover { background: var(--gray-light); }
 
-    /* ─── WHAT IS BBPS SLIDE ─── */
-    .segments-diagram {
-      background: white; border-radius: 14px; padding: 28px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-      display: flex; align-items: center; justify-content: center; gap: 0;
-      margin-bottom: 20px;
+    /* ─── SUCCESS SCREEN ─── */
+    .success-card {
+      background: white; border-radius: 20px; padding: 48px 40px; text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 600px; margin: 0 auto;
     }
-    .seg-block {
-      flex: 1; text-align: center; padding: 20px 12px;
-      border-right: 2px dashed var(--gray-light);
+    .success-checkmark { font-size: 72px; margin-bottom: 20px; }
+    .success-card h2 { color: var(--score3); font-size: 28px; margin-bottom: 12px; }
+    .success-card .success-sub { font-size: 16px; color: var(--gray); line-height: 1.7; margin-bottom: 28px; }
+    .success-detail {
+      background: var(--off-white); border-radius: 12px; padding: 20px;
+      margin-bottom: 24px; text-align: left;
     }
-    .seg-block:last-child { border-right: none; }
-    .seg-icon { font-size: 32px; margin-bottom: 8px; }
-    .seg-name { font-weight: 700; font-size: 14px; color: var(--blue-dark); margin-bottom: 4px; }
-    .seg-sub  { font-size: 11px; color: var(--gray); }
-    .seg-score { margin-top: 10px; }
-    .seg-score span {
-      display: inline-block; background: var(--blue-dark); color: white;
-      border-radius: 4px; font-size: 11px; font-weight: 700; padding: 3px 8px;
-    }
+    .success-detail-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--gray-light); font-size: 14px; }
+    .success-detail-row:last-child { border-bottom: none; }
+    .success-detail-row .label { color: var(--gray); }
+    .success-detail-row .value { font-weight: 600; color: var(--blue-dark); }
+    .saving-indicator { font-size: 13px; color: var(--teal); margin-top: 12px; }
 
-    .info-row {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    /* ─── SAVING OVERLAY ─── */
+    #saving-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(10,35,66,0.6);
+      z-index: 999; align-items: center; justify-content: center;
     }
-    @media(max-width:560px){ .info-row { grid-template-columns: 1fr; } }
-    .info-block {
-      background: white; border-radius: 10px; padding: 20px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    }
-    .info-block h3 { font-size: 14px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-    .info-block p, .info-block li { font-size: 13px; color: #374151; line-height: 1.65; }
-    .info-block ul { padding-left: 16px; }
-
-    /* ─── SECTION HEADER ─── */
-    .section-header {
-      background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
-      color: white; border-radius: 14px; padding: 28px 32px; margin-bottom: 28px;
-      display: flex; align-items: center; gap: 20px;
-    }
-    .section-header .sh-icon {
-      font-size: 42px; flex-shrink: 0;
-    }
-    .section-header h2 { color: white; margin-bottom: 4px; }
-    .section-header p  { color: rgba(255,255,255,0.72); font-size: 14px; line-height: 1.6; }
+    #saving-overlay.show { display: flex; }
+    .saving-box { background: white; border-radius: 16px; padding: 32px 40px; text-align: center; }
+    .saving-box .spin { font-size: 36px; animation: spin 1s linear infinite; display: inline-block; margin-bottom: 12px; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .saving-box p { font-size: 16px; color: var(--blue-dark); font-weight: 600; }
   </style>
 </head>
 <body>
 
-<div id="progress-bar-wrap"><div id="progress-bar"></div></div>
-
-<header>
-  <div class="logo">
-    <span class="logo-badge">RIGHT-CLEAN</span>
-    <span class="logo-title">BBPS Investigator Training</span>
-  </div>
-  <div id="timer-display">Estimated time: <span id="timer-text">5:00</span></div>
-</header>
-
-<div id="app">
-
-  <!-- ══════════════════════════════════════════
-       SLIDE 0 — INTRO
-  ══════════════════════════════════════════ -->
-  <div class="slide active" id="slide-0">
-    <div class="intro-hero">
-      <div style="margin-bottom:18px">
-        <span style="display:inline-block;background:rgba(0,168,150,0.25);color:#5eead4;
-          font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
-          padding:5px 14px;border-radius:20px;margin-bottom:18px;">
-          Westmead Hospital · Endoscopy Unit
-        </span>
-      </div>
-      <h1>Boston Bowel Preparation Scale</h1>
-      <p class="sub">Investigator Training Module for the RIGHT-CLEAN Prospective Trial</p>
-      <div class="intro-meta">
-        <div class="intro-meta-item">
-          <div class="num">~5</div>
-          <div class="lbl">Minutes</div>
-        </div>
-        <div class="intro-meta-item">
-          <div class="num">9</div>
-          <div class="lbl">Sections</div>
-        </div>
-        <div class="intro-meta-item">
-          <div class="num">10</div>
-          <div class="lbl">Quiz Questions</div>
-        </div>
-      </div>
-      <button class="btn-start" onclick="startModule()">Start Training →</button>
+<!-- ════════════════════════════════════════
+     REGISTRATION SCREEN
+════════════════════════════════════════ -->
+<div id="registration-screen">
+  <div class="reg-card">
+    <div class="reg-logo">
+      <span class="reg-logo-badge">RIGHT-CLEAN</span>
+      <span class="reg-logo-title">Westmead Hospital · Endoscopy Unit</span>
     </div>
-    <div class="card">
-      <h3 style="font-size:15px;color:var(--blue-dark);margin-bottom:10px;">About This Module</h3>
-      <p style="font-size:14px;color:var(--gray);line-height:1.7;">
-        This training module standardises the application of the
-        <strong>Boston Bowel Preparation Scale (BBPS)</strong> for all
-        gastroenterologists participating in the <strong>RIGHT-CLEAN</strong> prospective trial.
-        You will learn to score bowel preparation quality consistently and identify patient eligibility for randomisation.
-        Complete the module and pass the knowledge check to proceed.
-      </p>
+    <h2>Investigator Registration</h2>
+    <p class="reg-sub">Please enter your full name before beginning the BBPS training module. Your name will be recorded upon successful completion.</p>
+
+    <div class="reg-field">
+      <label for="input-first">First Name</label>
+      <input type="text" id="input-first" placeholder="e.g. John" autocomplete="given-name" />
+      <div class="reg-error" id="err-first">Please enter your first name.</div>
+    </div>
+    <div class="reg-field">
+      <label for="input-last">Last Name</label>
+      <input type="text" id="input-last" placeholder="e.g. Smith" autocomplete="family-name" />
+      <div class="reg-error" id="err-last">Please enter your last name.</div>
+    </div>
+
+    <button class="btn-reg" onclick="submitRegistration()">Begin Training →</button>
+
+    <div class="reg-note">
+      ⚠️ <strong>Important:</strong> You must answer all 10 questions correctly (10/10) to complete this training. Your result will only be recorded upon achieving a perfect score.
     </div>
   </div>
+</div>
 
-  <!-- ══════════════════════════════════════════
-       SLIDE 1 — WHAT IS BBPS?
-  ══════════════════════════════════════════ -->
-  <div class="slide" id="slide-1">
-    <span class="slide-tag">Section 1 of 9</span>
-    <h2>What is the BBPS?</h2>
-    <div class="divider"></div>
-    <p class="lead">
-      The Boston Bowel Preparation Scale is the world's most widely validated instrument for assessing
-      colon cleanliness during colonoscopy. It evaluates <strong>three colonic segments</strong> separately,
-      each scored from 0–3, yielding a total of 0–9.
-    </p>
+<!-- ════════════════════════════════════════
+     MAIN APP
+════════════════════════════════════════ -->
+<div id="main-app">
+  <div id="progress-bar-wrap"><div id="progress-bar"></div></div>
 
-    <div class="segments-diagram">
-      <div class="seg-block">
-        <div class="seg-icon">🔴</div>
-        <div class="seg-name">Right Colon</div>
-        <div class="seg-sub">Cecum + ascending colon</div>
-        <div class="seg-score"><span>0 – 3 pts</span></div>
-      </div>
-      <div class="seg-block">
-        <div class="seg-icon">🟡</div>
-        <div class="seg-name">Transverse Colon</div>
-        <div class="seg-sub">Including hepatic &amp; splenic flexures</div>
-        <div class="seg-score"><span>0 – 3 pts</span></div>
-      </div>
-      <div class="seg-block">
-        <div class="seg-icon">🟢</div>
-        <div class="seg-name">Left Colon</div>
-        <div class="seg-sub">Descending + sigmoid + rectum</div>
-        <div class="seg-score"><span>0 – 3 pts</span></div>
-      </div>
+  <header>
+    <div class="logo">
+      <span class="logo-badge">RIGHT-CLEAN</span>
+      <span class="logo-title">BBPS Investigator Training</span>
     </div>
-
-    <div class="info-row" style="margin-bottom:16px;">
-      <div class="info-block">
-        <h3>🏆 Total Score Range</h3>
-        <p><strong>0</strong> = Completely unprepared<br><strong>9</strong> = Perfectly prepared (best)</p>
-        <p style="margin-top:8px;">Reported as segment scores + total, e.g. <strong>1/2/3 = 6</strong></p>
-      </div>
-      <div class="info-block">
-        <h3>📋 RIGHT-CLEAN Eligibility</h3>
-        <p>Eligibility is determined by the <strong>right colon BBPS at caecal intubation</strong>.</p>
-        <p style="margin-top:8px;"><strong>Score &lt; 2</strong> (0 or 1) → <span style="color:var(--eligible);font-weight:700;">ELIGIBLE</span><br>
-        <strong>Score ≥ 2</strong> → <span style="color:var(--not-eligible);font-weight:700;">NOT eligible</span></p>
-      </div>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <div id="header-name"></div>
+      <div id="timer-display">Time: <span id="timer-text">0:00</span></div>
     </div>
+  </header>
 
-    <div class="info-row">
-      <div class="info-block">
-        <h3>⏱️ When to Score</h3>
-        <ul>
-          <li>Always score <strong>on withdrawal</strong></li>
-          <li>After washing &amp; suctioning each segment</li>
-          <li>Perform all cleaning before scoring</li>
-          <li>Always aim for the highest possible score</li>
-        </ul>
-      </div>
-      <div class="info-block">
-        <h3>🔬 Original Validation</h3>
-        <p>First published by Lai et al., 2009. Inter-rater reliability ICC = 0.91. The most widely used bowel prep scale in research worldwide.</p>
-      </div>
-    </div>
-  </div>
+  <div id="app">
 
-  <!-- ══════════════════════════════════════════
-       SLIDE 2 — SCORE 0
-  ══════════════════════════════════════════ -->
-  <div class="slide" id="slide-2">
-    <span class="slide-tag">Section 2 of 9 — BBPS Score 0</span>
-    <div class="score-layout">
-      <div class="score-info">
-        <div class="score-header">
-          <div class="score-badge s0">0</div>
-          <div class="score-title">
-            <div class="definition-label">BBPS Score 0</div>
-            <h2 style="color:var(--score0);">UNPREPARED</h2>
-          </div>
+    <!-- SLIDE 0 — INTRO -->
+    <div class="slide active" id="slide-0">
+      <div class="intro-hero">
+        <div style="margin-bottom:18px;">
+          <span style="display:inline-block;background:rgba(0,168,150,0.25);color:#5eead4;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:18px;">
+            Westmead Hospital · Endoscopy Unit
+          </span>
         </div>
-
-        <div class="score-definition" style="border-color:var(--score0);">
-          Mucosa of the segment <strong>cannot be seen</strong> due to solid or semi-solid stool that cannot be cleared.
+        <h1>Boston Bowel Preparation Scale</h1>
+        <p class="sub">Investigator Training Module for the RIGHT-CLEAN Prospective Trial</p>
+        <div class="intro-meta">
+          <div class="intro-meta-item"><div class="num">~5</div><div class="lbl">Minutes</div></div>
+          <div class="intro-meta-item"><div class="num">9</div><div class="lbl">Sections</div></div>
+          <div class="intro-meta-item"><div class="num">10/10</div><div class="lbl">Required</div></div>
         </div>
-
-        <div class="card" style="padding:16px;">
-          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray);margin-bottom:10px;">Clinical Indicators</p>
-          <ul class="checklist">
-            <li>Solid stool present throughout segment</li>
-            <li>Mucosa completely obscured</li>
-            <li>Cannot be suctioned or cleared</li>
-            <li class="no">Procedure should be repeated</li>
-          </ul>
-        </div>
-
-        <div class="eligibility-banner eligible">
-          <span style="font-size:18px;">✅</span>
-          <div>Score 0 in right colon = <strong>ELIGIBLE</strong> for RIGHT-CLEAN randomisation</div>
-        </div>
+        <button class="btn-start" onclick="startModule()">Start Training →</button>
       </div>
 
-      <div>
-        <div class="score-image-wrap" style="border: 3px solid var(--score0);">
-          <img
-            src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-0-1.jpg"
-            alt="BBPS Score 0 — Unprepared colon"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-          />
-          <div class="img-fallback" style="display:none; align-items:center; justify-content:center; height:100%; width:100%;">
-            <div>
-              <div style="font-size:40px;margin-bottom:8px;">🔴</div>
-              <div style="color:rgba(255,255,255,0.6);font-size:13px;">BBPS 0 — Unprepared<br>Solid stool, mucosa not seen</div>
-            </div>
-          </div>
-        </div>
-        <p class="image-caption">BBPS 0: Dense solid stool completely obscuring the mucosa. No visualization possible. Source: Endoscopy Campus</p>
-
-        <div class="card" style="margin-top:16px;padding:16px;background:#fff5f5;border:1px solid #fecaca;">
-          <p style="font-size:13px;color:#991b1b;line-height:1.6;">
-            <strong>⚠️ Important:</strong> Even at Score 0, perform maximum effort at cleaning before scoring. Score after all washing and suctioning attempts are complete.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       SLIDE 3 — SCORE 1
-  ══════════════════════════════════════════ -->
-  <div class="slide" id="slide-3">
-    <span class="slide-tag">Section 3 of 9 — BBPS Score 1</span>
-    <div class="score-layout">
-      <div class="score-info">
-        <div class="score-header">
-          <div class="score-badge s1">1</div>
-          <div class="score-title">
-            <div class="definition-label">BBPS Score 1</div>
-            <h2 style="color:var(--score1);">INADEQUATE</h2>
-          </div>
-        </div>
-
-        <div class="score-definition" style="border-color:var(--score1);">
-          Portions of mucosa are visible, but other areas are <strong>not well seen</strong> due to brown liquid stool or residue that <strong>cannot be fully suctioned</strong>.
-        </div>
-
-        <div class="card" style="padding:16px;">
-          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray);margin-bottom:10px;">Clinical Indicators</p>
-          <ul class="checklist">
-            <li>Partial mucosa visibility only</li>
-            <li>Brown liquid or stool residue present</li>
-            <li>Cannot be fully cleared by suctioning</li>
-            <li>Some folds visible, others obscured</li>
-          </ul>
-        </div>
-
-        <div class="eligibility-banner eligible">
-          <span style="font-size:18px;">✅</span>
-          <div>Score 1 in right colon = <strong>ELIGIBLE</strong> for RIGHT-CLEAN randomisation</div>
-        </div>
-      </div>
-
-      <div>
-        <div class="score-image-wrap" style="border: 3px solid var(--score1);">
-          <img
-            src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-1-1.jpg"
-            alt="BBPS Score 1 — Inadequate preparation"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-          />
-          <div class="img-fallback" style="display:none; align-items:center; justify-content:center; height:100%; width:100%;">
-            <div>
-              <div style="font-size:40px;margin-bottom:8px;">🟠</div>
-              <div style="color:rgba(255,255,255,0.6);font-size:13px;">BBPS 1 — Inadequate<br>Brown liquid, partial visibility</div>
-            </div>
-          </div>
-        </div>
-        <p class="image-caption">BBPS 1: Partial mucosal view with opaque brown liquid that cannot be fully suctioned. Some folds remain hidden. Source: Endoscopy Campus</p>
-
-        <div class="card" style="margin-top:16px;padding:16px;background:#fff7ed;border:1px solid #fed7aa;">
-          <p style="font-size:13px;color:#9a3412;line-height:1.6;">
-            <strong>Key distinction:</strong> Score 1 vs Score 2 — Can the residue be fully suctioned away to reveal all mucosa? If <em>no</em> → Score 1. If <em>yes</em> → Score 2.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       SLIDE 4 — SCORE 2
-  ══════════════════════════════════════════ -->
-  <div class="slide" id="slide-4">
-    <span class="slide-tag">Section 4 of 9 — BBPS Score 2</span>
-    <div class="score-layout">
-      <div class="score-info">
-        <div class="score-header">
-          <div class="score-badge s2">2</div>
-          <div class="score-title">
-            <div class="definition-label">BBPS Score 2</div>
-            <h2 style="color:#ca8a04;">ADEQUATE</h2>
-          </div>
-        </div>
-
-        <div class="score-definition" style="border-color:var(--score2);">
-          Mucosa of the entire segment is <strong>well seen</strong>, with only a minor amount of turbid liquid or small residue that <strong>can be suctioned or washed away</strong>.
-        </div>
-
-        <div class="card" style="padding:16px;">
-          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray);margin-bottom:10px;">Clinical Indicators</p>
-          <ul class="checklist">
-            <li>Mucosa clearly visible in its entirety</li>
-            <li>Minor turbid liquid or small fragments</li>
-            <li>Residue <em>can</em> be fully suctioned away</li>
-            <li>All folds can be examined</li>
-          </ul>
-        </div>
-
-        <div class="eligibility-banner not-eligible">
-          <span style="font-size:18px;">🚫</span>
-          <div>Score ≥ 2 in right colon = <strong>NOT ELIGIBLE</strong> for RIGHT-CLEAN</div>
-        </div>
-      </div>
-
-      <div>
-        <div class="score-image-wrap" style="border: 3px solid var(--score2);">
-          <img
-            src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-2-1.jpg"
-            alt="BBPS Score 2 — Adequate preparation"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-          />
-          <div class="img-fallback" style="display:none; align-items:center; justify-content:center; height:100%; width:100%;">
-            <div>
-              <div style="font-size:40px;margin-bottom:8px;">🟡</div>
-              <div style="color:rgba(255,255,255,0.6);font-size:13px;">BBPS 2 — Adequate<br>Mucosa visible, minor suctionable residue</div>
-            </div>
-          </div>
-        </div>
-        <p class="image-caption">BBPS 2: Full mucosal visibility with minor turbid liquid or small fragments — all removable by suctioning. Source: Endoscopy Campus</p>
-
-        <div class="card" style="margin-top:16px;padding:16px;background:#fefce8;border:1px solid #fef08a;">
-          <p style="font-size:13px;color:#713f12;line-height:1.6;">
-            <strong>Critical threshold:</strong> Score 2 means adequate preparation — the right colon was sufficiently clean. RIGHT-CLEAN aims to intervene when preparation is <em>below</em> this threshold.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       SLIDE 5 — SCORE 3
-  ══════════════════════════════════════════ -->
-  <div class="slide" id="slide-5">
-    <span class="slide-tag">Section 5 of 9 — BBPS Score 3</span>
-    <div class="score-layout">
-      <div class="score-info">
-        <div class="score-header">
-          <div class="score-badge s3">3</div>
-          <div class="score-title">
-            <div class="definition-label">BBPS Score 3</div>
-            <h2 style="color:var(--score3);">EXCELLENT</h2>
-          </div>
-        </div>
-
-        <div class="score-definition" style="border-color:var(--score3);">
-          Entire mucosa of the segment is <strong>well seen</strong> with <strong>no residual staining, stool fragments, or opaque liquid</strong>. Only small amounts of clear liquid may be present.
-        </div>
-
-        <div class="card" style="padding:16px;">
-          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray);margin-bottom:10px;">Clinical Indicators</p>
-          <ul class="checklist">
-            <li>Entire mucosa visible without exception</li>
-            <li>No stool residue or staining</li>
-            <li>No opaque or coloured liquid</li>
-            <li>Clear liquid only (if any fluid present)</li>
-          </ul>
-        </div>
-
-        <div class="eligibility-banner not-eligible">
-          <span style="font-size:18px;">🚫</span>
-          <div>Score ≥ 2 in right colon = <strong>NOT ELIGIBLE</strong> for RIGHT-CLEAN</div>
-        </div>
-      </div>
-
-      <div>
-        <div class="score-image-wrap" style="border: 3px solid var(--score3);">
-          <img
-            src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-3-1.jpg"
-            alt="BBPS Score 3 — Excellent preparation"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-          />
-          <div class="img-fallback" style="display:none; align-items:center; justify-content:center; height:100%; width:100%;">
-            <div>
-              <div style="font-size:40px;margin-bottom:8px;">🟢</div>
-              <div style="color:rgba(255,255,255,0.6);font-size:13px;">BBPS 3 — Excellent<br>Entire mucosa seen, no residue</div>
-            </div>
-          </div>
-        </div>
-        <p class="image-caption">BBPS 3: Perfect preparation — entire mucosa visible, no stool, no opaque liquid, clear liquid only if present. Source: Endoscopy Campus</p>
-
-        <div class="card" style="margin-top:16px;padding:16px;background:#f0fdf4;border:1px solid #bbf7d0;">
-          <p style="font-size:13px;color:#166534;line-height:1.6;">
-            <strong>Best outcome:</strong> Score 3 represents optimal preparation. A total BBPS of 9 (3+3+3) reflects a perfectly clean colon throughout.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       SLIDE 6 — VISUAL COMPARISON
-  ══════════════════════════════════════════ -->
-  <div class="slide" id="slide-6">
-    <span class="slide-tag">Section 6 of 9</span>
-    <h2>Visual Comparison — All Four Scores</h2>
-    <div class="divider"></div>
-    <p class="lead">Use this side-by-side reference to calibrate your scoring. Each image shows the characteristic appearance of that BBPS grade.</p>
-
-    <div class="comparison-grid" style="margin-bottom:24px;">
-      <div class="comparison-card">
-        <div class="comp-img">
-          <img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-0-1.jpg"
-            alt="BBPS 0" onerror="this.parentNode.style.background='#dc2626';this.style.display='none';" />
-        </div>
-        <div class="comp-body">
-          <div class="comp-score-row">
-            <div class="comp-score-num" style="background:var(--score0);">0</div>
-            <div class="comp-score-name">UNPREPARED</div>
-          </div>
-          <div class="comp-desc">Mucosa not seen. Solid stool cannot be cleared.</div>
-          <div class="comp-elig yes">✅ ELIGIBLE (score &lt; 2)</div>
-        </div>
-      </div>
-
-      <div class="comparison-card">
-        <div class="comp-img">
-          <img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-1-1.jpg"
-            alt="BBPS 1" onerror="this.parentNode.style.background='#f97316';this.style.display='none';" />
-        </div>
-        <div class="comp-body">
-          <div class="comp-score-row">
-            <div class="comp-score-num" style="background:var(--score1);">1</div>
-            <div class="comp-score-name">INADEQUATE</div>
-          </div>
-          <div class="comp-desc">Portions visible. Opaque liquid cannot be fully suctioned.</div>
-          <div class="comp-elig yes">✅ ELIGIBLE (score &lt; 2)</div>
-        </div>
-      </div>
-
-      <div class="comparison-card">
-        <div class="comp-img">
-          <img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-2-1.jpg"
-            alt="BBPS 2" onerror="this.parentNode.style.background='#ca8a04';this.style.display='none';" />
-        </div>
-        <div class="comp-body">
-          <div class="comp-score-row">
-            <div class="comp-score-num" style="background:var(--score2);">2</div>
-            <div class="comp-score-name">ADEQUATE</div>
-          </div>
-          <div class="comp-desc">Mucosa well seen. Minor residue that can be suctioned.</div>
-          <div class="comp-elig no">🚫 NOT ELIGIBLE (score ≥ 2)</div>
-        </div>
-      </div>
-
-      <div class="comparison-card">
-        <div class="comp-img">
-          <img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-3-1.jpg"
-            alt="BBPS 3" onerror="this.parentNode.style.background='#16a34a';this.style.display='none';" />
-        </div>
-        <div class="comp-body">
-          <div class="comp-score-row">
-            <div class="comp-score-num" style="background:var(--score3);">3</div>
-            <div class="comp-score-name">EXCELLENT</div>
-          </div>
-          <div class="comp-desc">Entire mucosa seen. No residue. Clear liquid only.</div>
-          <div class="comp-elig no">🚫 NOT ELIGIBLE (score ≥ 2)</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" style="background:var(--blue-dark);color:white;padding:20px;">
-      <p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,0.85);">
-        <strong style="color:white;">Key discriminator:</strong> The critical question is whether residue
-        <em>can be fully suctioned away</em>. If residue cannot be cleared → Score 0 or 1 (eligible).
-        If it can be cleared → Score 2 or 3 (not eligible). Score 3 requires absolutely no opaque material.
-      </p>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       SLIDE 7 — HOW TO ASSIGN
-  ══════════════════════════════════════════ -->
-  <div class="slide" id="slide-7">
-    <span class="slide-tag">Section 7 of 9</span>
-    <h2>How to Assign the BBPS</h2>
-    <div class="divider"></div>
-    <p class="lead">Follow this four-step workflow at every colonoscopy in the RIGHT-CLEAN trial.</p>
-
-    <div class="card" style="margin-bottom:24px;">
-      <div class="workflow-steps">
-        <div class="workflow-step">
-          <div class="step-line"></div>
-          <div class="step-num">1</div>
-          <div class="step-content">
-            <h3>Reach the Caecum / Terminal Ileum</h3>
-            <p>Complete full colonoscopy to the caecum or terminal ileum as per standard practice.</p>
-          </div>
-        </div>
-
-        <div class="workflow-step">
-          <div class="step-line"></div>
-          <div class="step-num">2</div>
-          <div class="step-content">
-            <h3>Wash &amp; Suction Each Segment</h3>
-            <p>Perform all cleaning manoeuvres before scoring. Always aim for the highest possible score. Do not score until all efforts have been made.</p>
-            <div class="step-highlight">
-              ⭐ Record the right colon BBPS at this point — this determines RIGHT-CLEAN eligibility for randomisation.
-            </div>
-          </div>
-        </div>
-
-        <div class="workflow-step">
-          <div class="step-line"></div>
-          <div class="step-num">3</div>
-          <div class="step-content">
-            <h3>Score During Withdrawal</h3>
-            <p>Assign 0–3 to each segment: <strong>right colon</strong>, <strong>transverse colon</strong>, and <strong>left colon</strong>. Score independently for each segment.</p>
-          </div>
-        </div>
-
-        <div class="workflow-step">
-          <div class="step-num">4</div>
-          <div class="step-content">
-            <h3>Sum the Segments &amp; Document</h3>
-            <p>Total BBPS = right + transverse + left (range 0–9). Document as individual segment scores plus total.</p>
-            <div style="margin-top:10px;background:var(--off-white);border-radius:8px;padding:12px 14px;">
-              <span style="font-size:13px;color:var(--blue-dark);">Example: Right=<strong>1</strong>, Transverse=<strong>2</strong>, Left=<strong>3</strong> → documented as <strong>1/2/3 = 6</strong></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:10px;padding:16px 20px;">
-      <p style="font-size:14px;color:#92400e;line-height:1.7;">
-        <strong>⚠️ Important reminder:</strong> The right colon BBPS at caecal intubation determines RIGHT-CLEAN eligibility.
-        A score of <strong>0 or 1</strong> = eligible for randomisation. A score of <strong>2 or 3</strong> = not eligible.
-        This score must be recorded before withdrawal begins.
-      </p>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       SLIDE 8 — QUICK REFERENCE
-  ══════════════════════════════════════════ -->
-  <div class="slide" id="slide-8">
-    <span class="slide-tag">Section 8 of 9</span>
-    <h2>Quick Reference — BBPS Scoring Guide</h2>
-    <div class="divider"></div>
-
-    <div class="card" style="padding:0;overflow:hidden;margin-bottom:24px;">
-      <table class="qr-table">
-        <thead>
-          <tr>
-            <th>Score</th>
-            <th>Name</th>
-            <th>Mucosa Visibility</th>
-            <th>Residue</th>
-            <th>RIGHT-CLEAN</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="score-pill" style="background:var(--score0);">0</span></td>
-            <td><strong>Unprepared</strong></td>
-            <td>Not seen at all</td>
-            <td>Solid stool — cannot be cleared</td>
-            <td><span style="color:var(--eligible);font-weight:700;">✅ Eligible</span></td>
-          </tr>
-          <tr>
-            <td><span class="score-pill" style="background:var(--score1);">1</span></td>
-            <td><strong>Inadequate</strong></td>
-            <td>Partially seen</td>
-            <td>Opaque liquid — cannot fully suction</td>
-            <td><span style="color:var(--eligible);font-weight:700;">✅ Eligible</span></td>
-          </tr>
-          <tr>
-            <td><span class="score-pill" style="background:var(--score2);">2</span></td>
-            <td><strong>Adequate</strong></td>
-            <td>Well seen</td>
-            <td>Minor residue — can be suctioned</td>
-            <td><span style="color:var(--not-eligible);font-weight:700;">🚫 Not eligible</span></td>
-          </tr>
-          <tr>
-            <td><span class="score-pill" style="background:var(--score3);">3</span></td>
-            <td><strong>Excellent</strong></td>
-            <td>Entire mucosa seen</td>
-            <td>None — clear liquid only</td>
-            <td><span style="color:var(--not-eligible);font-weight:700;">🚫 Not eligible</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card" style="margin-bottom:16px;">
-      <p style="font-size:13px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:12px;">Colonic Segment Definitions</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-        <div style="text-align:center;padding:12px;background:var(--off-white);border-radius:8px;">
-          <div style="font-size:22px;margin-bottom:4px;">🔴</div>
-          <div style="font-size:13px;font-weight:700;color:var(--blue-dark);">Right Colon</div>
-          <div style="font-size:11px;color:var(--gray);margin-top:4px;">Cecum + ascending colon</div>
-        </div>
-        <div style="text-align:center;padding:12px;background:var(--off-white);border-radius:8px;">
-          <div style="font-size:22px;margin-bottom:4px;">🟡</div>
-          <div style="font-size:13px;font-weight:700;color:var(--blue-dark);">Transverse Colon</div>
-          <div style="font-size:11px;color:var(--gray);margin-top:4px;">Hepatic + splenic flexures</div>
-        </div>
-        <div style="text-align:center;padding:12px;background:var(--off-white);border-radius:8px;">
-          <div style="font-size:22px;margin-bottom:4px;">🟢</div>
-          <div style="font-size:13px;font-weight:700;color:var(--blue-dark);">Left Colon</div>
-          <div style="font-size:11px;color:var(--gray);margin-top:4px;">Descending + sigmoid + rectum</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" style="background:#f0f6ff;border:1px solid #bfdbfe;">
-      <p style="font-size:13px;color:#1e40af;line-height:1.7;">
-        <strong>Documentation format:</strong> Always record individual segment scores AND the total.
-        Example: <strong>1 / 2 / 3 = 6</strong> (Right / Transverse / Left = Total)
-      </p>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       SLIDE 9 — KEY MESSAGES
-  ══════════════════════════════════════════ -->
-  <div class="slide" id="slide-9">
-    <span class="slide-tag">Section 9 of 9 — Summary</span>
-    <h2>Key Messages</h2>
-    <div class="divider"></div>
-    <p class="lead">Before proceeding to the knowledge check, confirm you understand these four core principles.</p>
-
-    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
-      <div class="key-card">
-        <div class="key-num">01</div>
+      <div class="perfect-score-notice">
+        <div class="psn-icon">🎯</div>
         <div>
-          <h3>Score each segment separately — 0 to 3</h3>
-          <p>Right colon, transverse colon, and left colon are each scored independently on the 0–3 scale. Never assign a single score for the whole colon.</p>
+          <h3>Perfect Score Required — 10/10</h3>
+          <p>This is a standardisation requirement for the RIGHT-CLEAN trial. You must answer all 10 questions correctly. If you do not achieve 10/10, you will need to review the material and retake the assessment. Only a perfect score will be recorded in the trial database.</p>
         </div>
       </div>
-      <div class="key-card">
-        <div class="key-num">02</div>
-        <div>
-          <h3>Always score on withdrawal, after washing &amp; suctioning</h3>
-          <p>Complete all cleaning manoeuvres first. Scoring happens during the withdrawal phase only. Aim for the highest achievable score in every segment.</p>
-        </div>
+
+      <div class="card">
+        <h3 style="font-size:15px;color:var(--blue-dark);margin-bottom:10px;">About This Module</h3>
+        <p style="font-size:14px;color:var(--gray);line-height:1.7;">
+          This training module standardises the application of the <strong>Boston Bowel Preparation Scale (BBPS)</strong> for all gastroenterologists participating in the <strong>RIGHT-CLEAN</strong> prospective trial. You will learn to score bowel preparation quality consistently and identify patient eligibility for randomisation.
+        </p>
       </div>
-      <div class="key-card">
-        <div class="key-num">03</div>
-        <div>
-          <h3>Right colon BBPS &lt; 2 = ELIGIBLE for RIGHT-CLEAN</h3>
-          <p>Score 0 (unprepared) or Score 1 (inadequate) in the right colon at caecal intubation means the patient can be randomised. Score ≥ 2 = not eligible.</p>
-        </div>
+    </div>
+
+    <!-- SLIDE 1 — WHAT IS BBPS? -->
+    <div class="slide" id="slide-1">
+      <span class="slide-tag">Section 1 of 9</span>
+      <h2>What is the BBPS?</h2>
+      <div class="divider"></div>
+      <p class="lead">The Boston Bowel Preparation Scale is the world's most widely validated instrument for assessing colon cleanliness during colonoscopy. It evaluates <strong>three colonic segments</strong> separately, each scored 0–3, yielding a total of 0–9.</p>
+      <div class="segments-diagram">
+        <div class="seg-block"><div class="seg-icon">🔴</div><div class="seg-name">Right Colon</div><div class="seg-sub">Cecum + ascending colon</div><div class="seg-score"><span>0 – 3 pts</span></div></div>
+        <div class="seg-block"><div class="seg-icon">🟡</div><div class="seg-name">Transverse Colon</div><div class="seg-sub">Including hepatic &amp; splenic flexures</div><div class="seg-score"><span>0 – 3 pts</span></div></div>
+        <div class="seg-block"><div class="seg-icon">🟢</div><div class="seg-name">Left Colon</div><div class="seg-sub">Descending + sigmoid + rectum</div><div class="seg-score"><span>0 – 3 pts</span></div></div>
       </div>
-      <div class="key-card">
-        <div class="key-num">04</div>
+      <div class="info-row" style="margin-bottom:16px;">
+        <div class="info-block"><h3>🏆 Total Score Range</h3><p><strong>0</strong> = Completely unprepared<br><strong>9</strong> = Perfectly prepared (best)</p><p style="margin-top:8px;">Reported as segment scores + total, e.g. <strong>1/2/3 = 6</strong></p></div>
+        <div class="info-block"><h3>📋 RIGHT-CLEAN Eligibility</h3><p>Eligibility is determined by the <strong>right colon BBPS at caecal intubation</strong>.</p><p style="margin-top:8px;"><strong>Score &lt; 2</strong> (0 or 1) → <span style="color:var(--eligible);font-weight:700;">ELIGIBLE</span><br><strong>Score ≥ 2</strong> → <span style="color:var(--not-eligible);font-weight:700;">NOT eligible</span></p></div>
+      </div>
+      <div class="info-row">
+        <div class="info-block"><h3>⏱️ When to Score</h3><ul><li>Always score <strong>on withdrawal</strong></li><li>After washing &amp; suctioning each segment</li><li>Perform all cleaning before scoring</li><li>Always aim for the highest possible score</li></ul></div>
+        <div class="info-block"><h3>🔬 Original Validation</h3><p>First published by Lai et al., 2009. Inter-rater reliability ICC = 0.91. The most widely used bowel prep scale in research worldwide.</p></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 — SCORE 0 -->
+    <div class="slide" id="slide-2">
+      <span class="slide-tag">Section 2 of 9 — BBPS Score 0</span>
+      <div class="score-layout">
+        <div class="score-info">
+          <div class="score-header"><div class="score-badge s0">0</div><div class="score-title"><div class="definition-label">BBPS Score 0</div><h2 style="color:var(--score0);">UNPREPARED</h2></div></div>
+          <div class="score-definition" style="border-color:var(--score0);">Mucosa of the segment <strong>cannot be seen</strong> due to solid or semi-solid stool that cannot be cleared.</div>
+          <div class="card" style="padding:16px;"><p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray);margin-bottom:10px;">Clinical Indicators</p><ul class="checklist"><li>Solid stool present throughout segment</li><li>Mucosa completely obscured</li><li>Cannot be suctioned or cleared</li><li class="no">Procedure should be repeated</li></ul></div>
+          <div class="eligibility-banner eligible"><span style="font-size:18px;">✅</span><div>Score 0 in right colon = <strong>ELIGIBLE</strong> for RIGHT-CLEAN randomisation</div></div>
+        </div>
         <div>
-          <h3>Document as segment scores + total</h3>
-          <p>Always record in the format: Right / Transverse / Left = Total. Example: 1 / 2 / 3 = 6.</p>
+          <div class="score-image-wrap" style="border: 3px solid var(--score0);">
+            <img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-0-1.jpg" alt="BBPS Score 0" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;align-items:center;justify-content:center;height:100%;width:100%;"><div><div style="font-size:40px;margin-bottom:8px;">🔴</div><div>BBPS 0 — Unprepared<br>Solid stool, mucosa not seen</div></div></div>
+          </div>
+          <p class="image-caption">BBPS 0: Dense solid stool completely obscuring the mucosa. Source: Endoscopy Campus</p>
+          <div class="card" style="margin-top:16px;padding:16px;background:#fff5f5;border:1px solid #fecaca;"><p style="font-size:13px;color:#991b1b;line-height:1.6;"><strong>⚠️ Important:</strong> Even at Score 0, perform maximum effort at cleaning before scoring.</p></div>
         </div>
       </div>
     </div>
 
-    <div style="background:var(--blue-dark);border-radius:12px;padding:24px;text-align:center;color:white;">
-      <p style="font-size:14px;color:rgba(255,255,255,0.7);margin-bottom:8px;">You've completed all 9 training sections.</p>
-      <p style="font-size:17px;font-weight:700;margin-bottom:16px;">Ready to test your knowledge?</p>
-      <button class="btn-start" onclick="startQuiz()" style="padding:13px 36px;font-size:15px;">
-        Start Knowledge Check →
-      </button>
+    <!-- SLIDE 3 — SCORE 1 -->
+    <div class="slide" id="slide-3">
+      <span class="slide-tag">Section 3 of 9 — BBPS Score 1</span>
+      <div class="score-layout">
+        <div class="score-info">
+          <div class="score-header"><div class="score-badge s1">1</div><div class="score-title"><div class="definition-label">BBPS Score 1</div><h2 style="color:var(--score1);">INADEQUATE</h2></div></div>
+          <div class="score-definition" style="border-color:var(--score1);">Portions of mucosa are visible, but other areas are <strong>not well seen</strong> due to brown liquid stool or residue that <strong>cannot be fully suctioned</strong>.</div>
+          <div class="card" style="padding:16px;"><p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray);margin-bottom:10px;">Clinical Indicators</p><ul class="checklist"><li>Partial mucosa visibility only</li><li>Brown liquid or stool residue present</li><li>Cannot be fully cleared by suctioning</li><li>Some folds visible, others obscured</li></ul></div>
+          <div class="eligibility-banner eligible"><span style="font-size:18px;">✅</span><div>Score 1 in right colon = <strong>ELIGIBLE</strong> for RIGHT-CLEAN randomisation</div></div>
+        </div>
+        <div>
+          <div class="score-image-wrap" style="border: 3px solid var(--score1);">
+            <img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-1-1.jpg" alt="BBPS Score 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;align-items:center;justify-content:center;height:100%;width:100%;"><div><div style="font-size:40px;margin-bottom:8px;">🟠</div><div>BBPS 1 — Inadequate<br>Brown liquid, partial visibility</div></div></div>
+          </div>
+          <p class="image-caption">BBPS 1: Partial mucosal view with opaque brown liquid that cannot be fully suctioned. Source: Endoscopy Campus</p>
+          <div class="card" style="margin-top:16px;padding:16px;background:#fff7ed;border:1px solid #fed7aa;"><p style="font-size:13px;color:#9a3412;line-height:1.6;"><strong>Key distinction:</strong> Score 1 vs Score 2 — Can the residue be fully suctioned? If <em>no</em> → Score 1. If <em>yes</em> → Score 2.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 — SCORE 2 -->
+    <div class="slide" id="slide-4">
+      <span class="slide-tag">Section 4 of 9 — BBPS Score 2</span>
+      <div class="score-layout">
+        <div class="score-info">
+          <div class="score-header"><div class="score-badge s2">2</div><div class="score-title"><div class="definition-label">BBPS Score 2</div><h2 style="color:#ca8a04;">ADEQUATE</h2></div></div>
+          <div class="score-definition" style="border-color:var(--score2);">Mucosa of the entire segment is <strong>well seen</strong>, with only a minor amount of turbid liquid or small residue that <strong>can be suctioned or washed away</strong>.</div>
+          <div class="card" style="padding:16px;"><p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray);margin-bottom:10px;">Clinical Indicators</p><ul class="checklist"><li>Mucosa clearly visible in its entirety</li><li>Minor turbid liquid or small fragments</li><li>Residue <em>can</em> be fully suctioned away</li><li>All folds can be examined</li></ul></div>
+          <div class="eligibility-banner not-eligible"><span style="font-size:18px;">🚫</span><div>Score ≥ 2 in right colon = <strong>NOT ELIGIBLE</strong> for RIGHT-CLEAN</div></div>
+        </div>
+        <div>
+          <div class="score-image-wrap" style="border: 3px solid var(--score2);">
+            <img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-2-1.jpg" alt="BBPS Score 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;align-items:center;justify-content:center;height:100%;width:100%;"><div><div style="font-size:40px;margin-bottom:8px;">🟡</div><div>BBPS 2 — Adequate<br>Mucosa visible, minor suctionable residue</div></div></div>
+          </div>
+          <p class="image-caption">BBPS 2: Full mucosal visibility with minor turbid liquid. Source: Endoscopy Campus</p>
+          <div class="card" style="margin-top:16px;padding:16px;background:#fefce8;border:1px solid #fef08a;"><p style="font-size:13px;color:#713f12;line-height:1.6;"><strong>Critical threshold:</strong> Score 2 = adequate preparation. RIGHT-CLEAN targets preparation <em>below</em> this threshold.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 — SCORE 3 -->
+    <div class="slide" id="slide-5">
+      <span class="slide-tag">Section 5 of 9 — BBPS Score 3</span>
+      <div class="score-layout">
+        <div class="score-info">
+          <div class="score-header"><div class="score-badge s3">3</div><div class="score-title"><div class="definition-label">BBPS Score 3</div><h2 style="color:var(--score3);">EXCELLENT</h2></div></div>
+          <div class="score-definition" style="border-color:var(--score3);">Entire mucosa of the segment is <strong>well seen</strong> with <strong>no residual staining, stool fragments, or opaque liquid</strong>. Only small amounts of clear liquid may be present.</div>
+          <div class="card" style="padding:16px;"><p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray);margin-bottom:10px;">Clinical Indicators</p><ul class="checklist"><li>Entire mucosa visible without exception</li><li>No stool residue or staining</li><li>No opaque or coloured liquid</li><li>Clear liquid only (if any fluid present)</li></ul></div>
+          <div class="eligibility-banner not-eligible"><span style="font-size:18px;">🚫</span><div>Score ≥ 2 in right colon = <strong>NOT ELIGIBLE</strong> for RIGHT-CLEAN</div></div>
+        </div>
+        <div>
+          <div class="score-image-wrap" style="border: 3px solid var(--score3);">
+            <img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-3-1.jpg" alt="BBPS Score 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;align-items:center;justify-content:center;height:100%;width:100%;"><div><div style="font-size:40px;margin-bottom:8px;">🟢</div><div>BBPS 3 — Excellent<br>Entire mucosa seen, no residue</div></div></div>
+          </div>
+          <p class="image-caption">BBPS 3: Perfect preparation — entire mucosa visible, no residue. Source: Endoscopy Campus</p>
+          <div class="card" style="margin-top:16px;padding:16px;background:#f0fdf4;border:1px solid #bbf7d0;"><p style="font-size:13px;color:#166534;line-height:1.6;"><strong>Best outcome:</strong> A total BBPS of 9 (3+3+3) reflects a perfectly clean colon throughout.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 — COMPARISON -->
+    <div class="slide" id="slide-6">
+      <span class="slide-tag">Section 6 of 9</span>
+      <h2>Visual Comparison — All Four Scores</h2>
+      <div class="divider"></div>
+      <p class="lead">Use this side-by-side reference to calibrate your scoring.</p>
+      <div class="comparison-grid" style="margin-bottom:24px;">
+        <div class="comparison-card"><div class="comp-img"><img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-0-1.jpg" alt="BBPS 0" onerror="this.parentNode.style.background='#dc2626';this.style.display='none';" /></div><div class="comp-body"><div class="comp-score-row"><div class="comp-score-num" style="background:var(--score0);">0</div><div class="comp-score-name">UNPREPARED</div></div><div class="comp-desc">Mucosa not seen. Solid stool cannot be cleared.</div><div class="comp-elig yes">✅ ELIGIBLE (score &lt; 2)</div></div></div>
+        <div class="comparison-card"><div class="comp-img"><img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-1-1.jpg" alt="BBPS 1" onerror="this.parentNode.style.background='#f97316';this.style.display='none';" /></div><div class="comp-body"><div class="comp-score-row"><div class="comp-score-num" style="background:var(--score1);">1</div><div class="comp-score-name">INADEQUATE</div></div><div class="comp-desc">Portions visible. Opaque liquid cannot be fully suctioned.</div><div class="comp-elig yes">✅ ELIGIBLE (score &lt; 2)</div></div></div>
+        <div class="comparison-card"><div class="comp-img"><img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-2-1.jpg" alt="BBPS 2" onerror="this.parentNode.style.background='#ca8a04';this.style.display='none';" /></div><div class="comp-body"><div class="comp-score-row"><div class="comp-score-num" style="background:var(--score2);">2</div><div class="comp-score-name">ADEQUATE</div></div><div class="comp-desc">Mucosa well seen. Minor residue that can be suctioned.</div><div class="comp-elig no">🚫 NOT ELIGIBLE (score ≥ 2)</div></div></div>
+        <div class="comparison-card"><div class="comp-img"><img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-3-1.jpg" alt="BBPS 3" onerror="this.parentNode.style.background='#16a34a';this.style.display='none';" /></div><div class="comp-body"><div class="comp-score-row"><div class="comp-score-num" style="background:var(--score3);">3</div><div class="comp-score-name">EXCELLENT</div></div><div class="comp-desc">Entire mucosa seen. No residue. Clear liquid only.</div><div class="comp-elig no">🚫 NOT ELIGIBLE (score ≥ 2)</div></div></div>
+      </div>
+      <div class="card" style="background:var(--blue-dark);color:white;padding:20px;"><p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,0.85);"><strong style="color:white;">Key discriminator:</strong> Can residue be fully suctioned away? If <strong style="color:#5eead4;">no</strong> → Score 0 or 1 (eligible). If <strong style="color:#5eead4;">yes</strong> → Score 2 or 3 (not eligible). Score 3 requires absolutely no opaque material.</p></div>
+    </div>
+
+    <!-- SLIDE 7 — HOW TO ASSIGN -->
+    <div class="slide" id="slide-7">
+      <span class="slide-tag">Section 7 of 9</span>
+      <h2>How to Assign the BBPS</h2>
+      <div class="divider"></div>
+      <p class="lead">Follow this four-step workflow at every colonoscopy in the RIGHT-CLEAN trial.</p>
+      <div class="card" style="margin-bottom:24px;">
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div class="workflow-step"><div class="step-line"></div><div class="step-num">1</div><div class="step-content"><h3>Reach the Caecum / Terminal Ileum</h3><p>Complete full colonoscopy to the caecum or terminal ileum as per standard practice.</p></div></div>
+          <div class="workflow-step"><div class="step-line"></div><div class="step-num">2</div><div class="step-content"><h3>Wash &amp; Suction Each Segment</h3><p>Perform all cleaning manoeuvres before scoring. Always aim for the highest possible score.</p><div class="step-highlight">⭐ Record the right colon BBPS at this point — this determines RIGHT-CLEAN eligibility.</div></div></div>
+          <div class="workflow-step"><div class="step-line"></div><div class="step-num">3</div><div class="step-content"><h3>Score During Withdrawal</h3><p>Assign 0–3 to each segment: right colon, transverse colon, and left colon independently.</p></div></div>
+          <div class="workflow-step"><div class="step-num">4</div><div class="step-content"><h3>Sum the Segments &amp; Document</h3><p>Total BBPS = right + transverse + left (range 0–9).</p><div style="margin-top:10px;background:var(--off-white);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--blue-dark);">Example: Right=<strong>1</strong>, Transverse=<strong>2</strong>, Left=<strong>3</strong> → <strong>1/2/3 = 6</strong></div></div></div>
+        </div>
+      </div>
+      <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:10px;padding:16px 20px;"><p style="font-size:14px;color:#92400e;line-height:1.7;"><strong>⚠️ Important:</strong> Right colon score at caecal intubation = eligibility determinant. Score 0 or 1 → eligible. Score 2 or 3 → not eligible.</p></div>
+    </div>
+
+    <!-- SLIDE 8 — QUICK REF -->
+    <div class="slide" id="slide-8">
+      <span class="slide-tag">Section 8 of 9</span>
+      <h2>Quick Reference — BBPS Scoring Guide</h2>
+      <div class="divider"></div>
+      <div class="card" style="padding:0;overflow:hidden;margin-bottom:24px;">
+        <table class="qr-table">
+          <thead><tr><th>Score</th><th>Name</th><th>Mucosa Visibility</th><th>Residue</th><th>RIGHT-CLEAN</th></tr></thead>
+          <tbody>
+            <tr><td><span class="score-pill" style="background:var(--score0);">0</span></td><td><strong>Unprepared</strong></td><td>Not seen at all</td><td>Solid stool — cannot be cleared</td><td><span style="color:var(--eligible);font-weight:700;">✅ Eligible</span></td></tr>
+            <tr><td><span class="score-pill" style="background:var(--score1);">1</span></td><td><strong>Inadequate</strong></td><td>Partially seen</td><td>Opaque liquid — cannot fully suction</td><td><span style="color:var(--eligible);font-weight:700;">✅ Eligible</span></td></tr>
+            <tr><td><span class="score-pill" style="background:var(--score2);">2</span></td><td><strong>Adequate</strong></td><td>Well seen</td><td>Minor residue — can be suctioned</td><td><span style="color:var(--not-eligible);font-weight:700;">🚫 Not eligible</span></td></tr>
+            <tr><td><span class="score-pill" style="background:var(--score3);">3</span></td><td><strong>Excellent</strong></td><td>Entire mucosa seen</td><td>None — clear liquid only</td><td><span style="color:var(--not-eligible);font-weight:700;">🚫 Not eligible</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="background:#f0f6ff;border:1px solid #bfdbfe;"><p style="font-size:13px;color:#1e40af;line-height:1.7;"><strong>Documentation format:</strong> Always record individual segment scores AND the total. Example: <strong>1 / 2 / 3 = 6</strong> (Right / Transverse / Left = Total)</p></div>
+    </div>
+
+    <!-- SLIDE 9 — KEY MESSAGES -->
+    <div class="slide" id="slide-9">
+      <span class="slide-tag">Section 9 of 9 — Summary</span>
+      <h2>Key Messages</h2>
+      <div class="divider"></div>
+      <p class="lead">Before the knowledge check, confirm you understand these four core principles.</p>
+      <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
+        <div class="key-card"><div class="key-num">01</div><div><h3>Score each segment separately — 0 to 3</h3><p>Right colon, transverse colon, and left colon are each scored independently. Never assign a single score for the whole colon.</p></div></div>
+        <div class="key-card"><div class="key-num">02</div><div><h3>Always score on withdrawal, after washing &amp; suctioning</h3><p>Complete all cleaning manoeuvres first. Scoring happens during withdrawal only.</p></div></div>
+        <div class="key-card"><div class="key-num">03</div><div><h3>Right colon BBPS &lt; 2 = ELIGIBLE for RIGHT-CLEAN</h3><p>Score 0 or 1 in the right colon at caecal intubation → eligible for randomisation. Score ≥ 2 → not eligible.</p></div></div>
+        <div class="key-card"><div class="key-num">04</div><div><h3>Document as segment scores + total</h3><p>Always record in the format: Right / Transverse / Left = Total. Example: 1 / 2 / 3 = 6.</p></div></div>
+      </div>
+      <div style="background:var(--blue-dark);border-radius:12px;padding:24px;text-align:center;color:white;">
+        <p style="font-size:14px;color:rgba(255,255,255,0.7);margin-bottom:8px;">You've completed all 9 training sections.</p>
+        <p style="font-size:17px;font-weight:700;margin-bottom:6px;">Ready for the knowledge check?</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:20px;">You must answer all 10 questions correctly (10/10) to complete training.</p>
+        <button class="btn-start" onclick="startQuiz()" style="padding:13px 36px;font-size:15px;">Start Knowledge Check →</button>
+      </div>
+    </div>
+
+    <!-- QUIZ SLIDE -->
+    <div class="slide" id="slide-quiz">
+      <span class="slide-tag">Knowledge Check — 10/10 Required</span>
+      <h2>BBPS Knowledge Assessment</h2>
+      <div class="divider"></div>
+      <div class="quiz-counter">Question <span id="q-current">1</span> of <span id="q-total">10</span></div>
+      <div class="quiz-progress-wrap"><div class="quiz-progress-fill" id="quiz-progress-fill" style="width:0%"></div></div>
+      <div class="card" style="padding:32px;">
+        <div class="quiz-q" id="quiz-question"></div>
+        <div class="quiz-options" id="quiz-options"></div>
+        <div class="quiz-feedback" id="quiz-feedback"></div>
+        <button class="btn-next-q" id="btn-next-q" onclick="nextQuestion()">Next Question →</button>
+      </div>
+    </div>
+
+    <!-- RESULTS SLIDE -->
+    <div class="slide" id="slide-results">
+      <span class="slide-tag">Assessment Results</span>
+      <h2>Your Results</h2>
+      <div class="divider"></div>
+      <div class="results-wrap">
+        <div class="results-circle" id="results-circle">
+          <div class="big" id="results-score"></div>
+          <div class="small">out of 10</div>
+        </div>
+        <div class="results-message" id="results-message"></div>
+        <div class="results-sub" id="results-sub"></div>
+        <div class="results-breakdown" id="results-breakdown"></div>
+        <div id="results-actions"></div>
+      </div>
+    </div>
+
+    <!-- SUCCESS SLIDE -->
+    <div class="slide" id="slide-success">
+      <div style="max-width:600px;margin:0 auto;">
+        <div class="success-card">
+          <div class="success-checkmark">🎓</div>
+          <h2>Training Complete!</h2>
+          <p class="success-sub">You have achieved a perfect score and successfully completed the BBPS standardisation training for the RIGHT-CLEAN trial. Your completion has been recorded.</p>
+          <div class="success-detail" id="success-detail"></div>
+          <p class="saving-indicator" id="saving-status"></p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /#app -->
+
+  <!-- NAV BAR -->
+  <div class="nav-bar" id="nav-bar" style="display:none;">
+    <div class="nav-slide-info" id="nav-info">Section 1 of 9</div>
+    <div class="nav-buttons">
+      <button class="btn btn-prev" id="btn-prev" onclick="prevSlide()">← Back</button>
+      <button class="btn btn-next" id="btn-next" onclick="nextSlide()">Next →</button>
     </div>
   </div>
+</div><!-- /#main-app -->
 
-  <!-- ══════════════════════════════════════════
-       QUIZ SLIDE
-  ══════════════════════════════════════════ -->
-  <div class="slide" id="slide-quiz">
-    <span class="slide-tag">Knowledge Check</span>
-    <h2>BBPS Knowledge Assessment</h2>
-    <div class="divider"></div>
-
-    <div class="quiz-counter">
-      Question <span id="q-current">1</span> of <span id="q-total">10</span>
-    </div>
-    <div class="quiz-progress-wrap">
-      <div class="quiz-progress-fill" id="quiz-progress-fill" style="width:0%"></div>
-    </div>
-
-    <div class="card" style="padding:32px;">
-      <div class="quiz-q" id="quiz-question"></div>
-      <div class="quiz-options" id="quiz-options"></div>
-      <div class="quiz-feedback" id="quiz-feedback"></div>
-      <button class="btn-next-q" id="btn-next-q" onclick="nextQuestion()">Next Question →</button>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       RESULTS SLIDE
-  ══════════════════════════════════════════ -->
-  <div class="slide" id="slide-results">
-    <span class="slide-tag">Training Complete</span>
-    <h2>Your Results</h2>
-    <div class="divider"></div>
-    <div class="results-wrap">
-      <div class="results-circle" id="results-circle">
-        <div class="big" id="results-score"></div>
-        <div class="small" id="results-label"></div>
-      </div>
-      <div class="results-message" id="results-message"></div>
-      <div class="results-sub" id="results-sub"></div>
-      <div class="results-breakdown" id="results-breakdown"></div>
-      <button class="btn-restart" onclick="restartModule()">← Review Training</button>
-      <button class="btn-retake" onclick="retakeQuiz()">Retake Quiz</button>
-    </div>
-  </div>
-
-</div><!-- /#app -->
-
-<!-- ══════ NAVIGATION BAR ══════ -->
-<div class="nav-bar" id="nav-bar" style="display:none;">
-  <div class="nav-slide-info" id="nav-info">Slide 1 of 9</div>
-  <div class="nav-buttons">
-    <button class="btn btn-prev" id="btn-prev" onclick="prevSlide()">← Back</button>
-    <button class="btn btn-next" id="btn-next" onclick="nextSlide()">Next →</button>
+<!-- SAVING OVERLAY -->
+<div id="saving-overlay">
+  <div class="saving-box">
+    <div class="spin">⏳</div>
+    <p>Recording your completion…</p>
   </div>
 </div>
 
 <script>
-  // ─── DATA ───────────────────────────────────────────────────────────
-  const TOTAL_SLIDES = 9; // slides 1–9 (0 is intro)
+  // ════════════════════════════════════════════════════
+  // CONFIG — fill in your jsonbin.io credentials below
+  // ════════════════════════════════════════════════════
+  const CONFIG = {
+    JSONBIN_BIN_ID:  '69e89aa4aaba882197261dc1',   // e.g. '6622a1f8acd3cb34a83be123'
+    JSONBIN_API_KEY: '$2a$10$DSBK6pUTXI3c9YIfdDWKxu7Ft7bR.J8GTx6B1QzwGiGtrryeZ1/62',  // e.g. '$2a$10$...'
+  };
+
+  // ─── STATE ────────────────────────────────────────
+  const TOTAL_SLIDES = 9;
   let currentSlide = 0;
   let timerInterval = null;
   let secondsElapsed = 0;
-  const TOTAL_SECONDS = 300; // 5 minutes
+  let participantName = '';
+  let quizAnswers = [];
+  let currentQuestion = 0;
+  let questionAnswered = false;
 
   const QUESTIONS = [
     {
       q: "The Boston Bowel Preparation Scale scores each colonic segment from 0 to:",
       opts: ["5", "9", "3", "10"],
       answer: 2,
-      feedback: "Correct! Each of the three segments (right, transverse, left) is scored 0–3, giving a maximum total of 9."
+      feedback: "Each of the three segments (right, transverse, left) is scored 0–3, giving a maximum total of 9."
     },
     {
       q: "Which description best defines BBPS Score 0 (Unprepared)?",
@@ -1141,13 +655,13 @@
         "Portions of mucosa visible but obscured by opaque liquid"
       ],
       answer: 2,
-      feedback: "Score 0 = unprepared. The mucosa is completely hidden by solid or semi-solid stool that cannot be cleared, making the procedure essentially non-diagnostic for that segment."
+      feedback: "Score 0 = unprepared. The mucosa is completely hidden by solid or semi-solid stool that cannot be cleared."
     },
     {
       q: "In the RIGHT-CLEAN trial, a patient is ELIGIBLE for randomisation when the right colon BBPS at caecal intubation is:",
       opts: ["≥ 2", "= 0 only (unprepared)", "< 2 (score 0 or 1)", "Any score — all patients are eligible"],
       answer: 2,
-      feedback: "Eligibility requires right colon BBPS < 2, meaning score 0 (unprepared) OR score 1 (inadequate). Scores ≥ 2 indicate adequate preparation and the patient is NOT eligible."
+      feedback: "Eligibility requires right colon BBPS < 2, meaning score 0 OR score 1. Scores ≥ 2 mean adequate preparation and the patient is NOT eligible."
     },
     {
       q: "BBPS scoring should be performed:",
@@ -1164,7 +678,7 @@
       q: "What is the maximum total BBPS score a patient can achieve?",
       opts: ["6", "12", "3", "9"],
       answer: 3,
-      feedback: "The maximum score is 9 (3+3+3), representing perfect preparation in all three colonic segments: right, transverse, and left."
+      feedback: "The maximum score is 9 (3+3+3), representing perfect preparation in all three colonic segments."
     },
     {
       q: "BBPS Score 2 (Adequate) is best described as:",
@@ -1175,7 +689,7 @@
         "Partial visibility only due to opaque liquid that cannot be suctioned"
       ],
       answer: 2,
-      feedback: "Score 2 = adequate. The key is that mucosa is WELL SEEN throughout the segment, and any minor residue or turbid liquid CAN be fully suctioned or washed away."
+      feedback: "Score 2 = adequate. The mucosa is WELL SEEN throughout the segment, and any minor residue or turbid liquid CAN be fully suctioned or washed away."
     },
     {
       q: "An endoscopist documents a BBPS of 1 / 2 / 3. What does this mean for RIGHT-CLEAN eligibility?",
@@ -1203,7 +717,7 @@
         "Not eligible — total score must be 9 for eligibility assessment"
       ],
       answer: 2,
-      feedback: "Eligibility is determined solely by the RIGHT COLON score. Right colon = 2 means preparation was adequate — this patient is NOT eligible, regardless of total score."
+      feedback: "Eligibility is determined solely by the RIGHT COLON score. Right colon = 2 means adequate preparation — this patient is NOT eligible, regardless of total score."
     },
     {
       q: "What is the correct moment to record the right colon BBPS for RIGHT-CLEAN eligibility determination?",
@@ -1214,43 +728,78 @@
         "During the informed consent process"
       ],
       answer: 2,
-      feedback: "The right colon BBPS must be recorded at caecal intubation, after all washing and suctioning attempts have been made. This score determines whether the patient is eligible for randomisation before withdrawal begins."
+      feedback: "The right colon BBPS must be recorded at caecal intubation, after all washing and suctioning attempts. This score determines eligibility for randomisation before withdrawal begins."
     }
   ];
 
-  let quizAnswers = [];
-  let currentQuestion = 0;
-  let questionAnswered = false;
+  // ─── REGISTRATION ──────────────────────────────────
+  function submitRegistration() {
+    const first = document.getElementById('input-first').value.trim();
+    const last  = document.getElementById('input-last').value.trim();
+    let valid = true;
 
-  // ─── NAVIGATION ────────────────────────────────────────────────────
+    if (!first) {
+      document.getElementById('input-first').classList.add('error');
+      document.getElementById('err-first').style.display = 'block';
+      valid = false;
+    } else {
+      document.getElementById('input-first').classList.remove('error');
+      document.getElementById('err-first').style.display = 'none';
+    }
+    if (!last) {
+      document.getElementById('input-last').classList.add('error');
+      document.getElementById('err-last').style.display = 'block';
+      valid = false;
+    } else {
+      document.getElementById('input-last').classList.remove('error');
+      document.getElementById('err-last').style.display = 'none';
+    }
+    if (!valid) return;
+
+    participantName = first + ' ' + last;
+    document.getElementById('header-name').innerHTML = `<span>${participantName}</span>`;
+    document.getElementById('registration-screen').style.display = 'none';
+    document.getElementById('main-app').style.display = 'block';
+  }
+
+  // ─── TIMER ────────────────────────────────────────
+  function startTimer() {
+    if (timerInterval) return;
+    const display = document.getElementById('timer-text');
+    timerInterval = setInterval(() => {
+      secondsElapsed++;
+      const m = Math.floor(secondsElapsed / 60);
+      const s = secondsElapsed % 60;
+      display.textContent = `${m}:${s.toString().padStart(2, '0')}`;
+    }, 1000);
+  }
+
+  // ─── SLIDE NAVIGATION ────────────────────────────
   function showSlide(n) {
     document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-    const all = ['slide-0', ...Array.from({length: TOTAL_SLIDES}, (_,i)=>`slide-${i+1}`), 'slide-quiz', 'slide-results'];
-    if (n === -1) {
-      document.getElementById('slide-0').classList.add('active');
-      document.getElementById('nav-bar').style.display = 'none';
-      document.getElementById('timer-display').style.display = 'block';
-    } else if (n === 'quiz') {
+    if (n === 'quiz') {
       document.getElementById('slide-quiz').classList.add('active');
       document.getElementById('nav-bar').style.display = 'none';
     } else if (n === 'results') {
       document.getElementById('slide-results').classList.add('active');
       document.getElementById('nav-bar').style.display = 'none';
+    } else if (n === 'success') {
+      document.getElementById('slide-success').classList.add('active');
+      document.getElementById('nav-bar').style.display = 'none';
     } else {
       document.getElementById(`slide-${n}`).classList.add('active');
-      document.getElementById('nav-bar').style.display = 'flex';
-      updateNav();
+      const isContent = n >= 1 && n <= TOTAL_SLIDES;
+      document.getElementById('nav-bar').style.display = isContent ? 'flex' : 'none';
+      if (isContent) updateNav();
     }
-    updateProgressBar();
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    updateProgressBar(n);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function updateNav() {
-    const prev = document.getElementById('btn-prev');
+    document.getElementById('nav-info').textContent = `Section ${currentSlide} of ${TOTAL_SLIDES}`;
+    document.getElementById('btn-prev').disabled = currentSlide <= 1;
     const next = document.getElementById('btn-next');
-    const info = document.getElementById('nav-info');
-    info.textContent = `Section ${currentSlide} of ${TOTAL_SLIDES}`;
-    prev.disabled = currentSlide <= 1;
     if (currentSlide === TOTAL_SLIDES) {
       next.textContent = 'Knowledge Check →';
       next.className = 'btn btn-quiz';
@@ -1260,61 +809,36 @@
     }
   }
 
-  function updateProgressBar() {
+  function updateProgressBar(n) {
     const bar = document.getElementById('progress-bar');
-    if (currentSlide === -1) { bar.style.width = '0%'; return; }
-    if (currentSlide === 'quiz') { bar.style.width = '95%'; return; }
-    if (currentSlide === 'results') { bar.style.width = '100%'; return; }
-    const pct = (currentSlide / TOTAL_SLIDES) * 90;
-    bar.style.width = pct + '%';
+    if (n === 0) bar.style.width = '0%';
+    else if (n === 'quiz') bar.style.width = '92%';
+    else if (n === 'results') bar.style.width = '97%';
+    else if (n === 'success') bar.style.width = '100%';
+    else bar.style.width = `${(n / TOTAL_SLIDES) * 90}%`;
   }
 
   function startModule() {
     currentSlide = 1;
     startTimer();
     showSlide(1);
-    document.getElementById('nav-bar').style.display = 'flex';
-    updateNav();
   }
 
   function nextSlide() {
-    if (currentSlide < TOTAL_SLIDES) {
-      currentSlide++;
-      showSlide(currentSlide);
-      updateNav();
-    } else {
-      startQuiz();
-    }
+    if (currentSlide < TOTAL_SLIDES) { currentSlide++; showSlide(currentSlide); updateNav(); }
+    else startQuiz();
   }
 
   function prevSlide() {
-    if (currentSlide > 1) {
-      currentSlide--;
-      showSlide(currentSlide);
-      updateNav();
-    }
+    if (currentSlide > 1) { currentSlide--; showSlide(currentSlide); updateNav(); }
   }
 
-  // ─── TIMER ────────────────────────────────────────────────────────
-  function startTimer() {
-    if (timerInterval) return;
-    const display = document.getElementById('timer-text');
-    timerInterval = setInterval(() => {
-      secondsElapsed++;
-      const remaining = Math.max(0, TOTAL_SECONDS - secondsElapsed);
-      const m = Math.floor(remaining / 60);
-      const s = remaining % 60;
-      display.textContent = `${m}:${s.toString().padStart(2, '0')}`;
-    }, 1000);
-  }
-
-  // ─── QUIZ ─────────────────────────────────────────────────────────
+  // ─── QUIZ ────────────────────────────────────────
   function startQuiz() {
     currentQuestion = 0;
     quizAnswers = [];
-    currentSlide = 'quiz';
-    showSlide('quiz');
     document.getElementById('q-total').textContent = QUESTIONS.length;
+    showSlide('quiz');
     renderQuestion();
   }
 
@@ -1336,17 +860,17 @@
       const btn = document.createElement('button');
       btn.className = 'quiz-opt';
       btn.innerHTML = `<span class="opt-letter">${letters[i]}</span><span>${opt}</span>`;
-      btn.onclick = () => selectAnswer(i, btn);
+      btn.onclick = () => selectAnswer(i);
       optionsEl.appendChild(btn);
     });
   }
 
-  function selectAnswer(idx, btn) {
+  function selectAnswer(idx) {
     if (questionAnswered) return;
     questionAnswered = true;
     const qData = QUESTIONS[currentQuestion];
     const correct = idx === qData.answer;
-    quizAnswers.push({ correct, selected: idx, correct_idx: qData.answer });
+    quizAnswers.push({ correct, selected: idx, correct_idx: qData.answer, question: qData.q });
 
     document.querySelectorAll('.quiz-opt').forEach((el, i) => {
       el.classList.add('locked');
@@ -1357,70 +881,113 @@
     const fb = document.getElementById('quiz-feedback');
     fb.className = 'quiz-feedback show ' + (correct ? 'correct' : 'wrong');
     fb.innerHTML = `<strong>${correct ? '✅ Correct!' : '❌ Incorrect.'}</strong> ${qData.feedback}`;
-
     document.getElementById('btn-next-q').className = 'btn-next-q show';
   }
 
   function nextQuestion() {
     currentQuestion++;
-    if (currentQuestion < QUESTIONS.length) {
-      renderQuestion();
-    } else {
-      showResults();
-    }
+    if (currentQuestion < QUESTIONS.length) renderQuestion();
+    else showResults();
   }
 
-  // ─── RESULTS ──────────────────────────────────────────────────────
+  // ─── RESULTS ─────────────────────────────────────
   function showResults() {
-    currentSlide = 'results';
     showSlide('results');
-    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
-
     const score = quizAnswers.filter(a => a.correct).length;
-    const pct = Math.round((score / QUESTIONS.length) * 100);
-    const pass = pct >= 80;
+    const isPerfect = score === QUESTIONS.length;
 
     const circle = document.getElementById('results-circle');
-    circle.className = 'results-circle ' + (pass ? 'pass' : 'fail');
-    document.getElementById('results-score').textContent = `${score}/${QUESTIONS.length}`;
-    document.getElementById('results-label').textContent = pct + '%';
-    document.getElementById('results-message').textContent = pass
-      ? '🎉 Training Successfully Completed'
-      : '📚 Additional Review Recommended';
-    document.getElementById('results-sub').textContent = pass
-      ? 'You have demonstrated sufficient understanding of the BBPS for participation in the RIGHT-CLEAN trial. Please retain this confirmation for your records.'
-      : `You scored ${pct}% (${score}/${QUESTIONS.length}). A score of 80% or above is required. Please review the training material and retake the assessment.`;
+    circle.className = 'results-circle ' + (isPerfect ? 'pass' : 'fail');
+    document.getElementById('results-score').textContent = `${score}/10`;
+    document.getElementById('results-message').textContent = isPerfect
+      ? '🎉 Perfect Score — Training Complete!'
+      : `❌ ${score}/10 — Retake Required`;
+    document.getElementById('results-sub').textContent = isPerfect
+      ? 'Outstanding! You have demonstrated a complete understanding of the BBPS. Your completion is being recorded now.'
+      : `You answered ${score} out of 10 questions correctly. A perfect score of 10/10 is required. Please review the training material carefully and retake the assessment.`;
 
     const breakdown = document.getElementById('results-breakdown');
     breakdown.innerHTML = '';
     quizAnswers.forEach((a, i) => {
       const el = document.createElement('div');
       el.className = 'rb-item';
-      el.innerHTML = `
-        <span class="rb-icon">${a.correct ? '✅' : '❌'}</span>
-        <span class="rb-q">Q${i+1}: ${QUESTIONS[i].q.length > 60 ? QUESTIONS[i].q.substring(0,60)+'…' : QUESTIONS[i].q}</span>
-      `;
+      el.innerHTML = `<span class="rb-icon">${a.correct ? '✅' : '❌'}</span><span class="rb-q">Q${i+1}: ${QUESTIONS[i].q.length > 65 ? QUESTIONS[i].q.substring(0,65)+'…' : QUESTIONS[i].q}</span>`;
       breakdown.appendChild(el);
     });
 
+    const actionsEl = document.getElementById('results-actions');
+    if (isPerfect) {
+      actionsEl.innerHTML = '';
+      saveCompletion(score);
+    } else {
+      actionsEl.innerHTML = `
+        <button class="btn-review" onclick="reviewTraining()">← Review Training</button>
+        <button class="btn-retake" onclick="startQuiz()">Retake Assessment →</button>
+      `;
+    }
+
     document.getElementById('quiz-progress-fill').style.width = '100%';
-    document.getElementById('progress-bar').style.width = '100%';
   }
 
-  // ─── RESET ────────────────────────────────────────────────────────
-  function restartModule() {
+  function reviewTraining() {
     currentSlide = 1;
-    secondsElapsed = 0;
-    timerInterval = null;
-    document.getElementById('timer-text').textContent = '5:00';
     showSlide(1);
-    document.getElementById('nav-bar').style.display = 'flex';
-    startTimer();
     updateNav();
   }
 
-  function retakeQuiz() {
-    startQuiz();
+  // ─── SAVE COMPLETION ─────────────────────────────
+  async function saveCompletion(score) {
+    const now = new Date();
+    const entry = {
+      name: participantName,
+      score: `${score}/10`,
+      date: now.toLocaleDateString('en-AU', { day: '2-digit', month: '2-digit', year: 'numeric' }),
+      time: now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit', hour12: false }),
+      timestamp: now.toISOString(),
+      duration_seconds: secondsElapsed
+    };
+
+    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+
+    document.getElementById('saving-overlay').classList.add('show');
+
+    try {
+      const getRes = await fetch(`https://api.jsonbin.io/v3/b/${CONFIG.JSONBIN_BIN_ID}/latest`, {
+        headers: { 'X-Master-Key': CONFIG.JSONBIN_API_KEY }
+      });
+      const getData = await getRes.json();
+      const existing = getData.record || { completions: [] };
+      existing.completions.push(entry);
+
+      await fetch(`https://api.jsonbin.io/v3/b/${CONFIG.JSONBIN_BIN_ID}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'X-Master-Key': CONFIG.JSONBIN_API_KEY },
+        body: JSON.stringify(existing)
+      });
+
+      document.getElementById('saving-overlay').classList.remove('show');
+      showSuccessScreen(entry);
+    } catch (err) {
+      document.getElementById('saving-overlay').classList.remove('show');
+      showSuccessScreen(entry, true);
+    }
+  }
+
+  function showSuccessScreen(entry, saveError) {
+    showSlide('success');
+    const mins = Math.floor(entry.duration_seconds / 60);
+    const secs = entry.duration_seconds % 60;
+    document.getElementById('success-detail').innerHTML = `
+      <div class="success-detail-row"><span class="label">Participant</span><span class="value">${entry.name}</span></div>
+      <div class="success-detail-row"><span class="label">Score</span><span class="value" style="color:var(--score3);">${entry.score} — Perfect</span></div>
+      <div class="success-detail-row"><span class="label">Date</span><span class="value">${entry.date}</span></div>
+      <div class="success-detail-row"><span class="label">Time</span><span class="value">${entry.time}</span></div>
+      <div class="success-detail-row"><span class="label">Duration</span><span class="value">${mins}m ${secs}s</span></div>
+      <div class="success-detail-row"><span class="label">Trial</span><span class="value">RIGHT-CLEAN · Westmead Hospital</span></div>
+    `;
+    document.getElementById('saving-status').textContent = saveError
+      ? '⚠️ Note: Could not save to database — please screenshot this page.'
+      : '✅ Your completion has been recorded in the trial database.';
   }
 </script>
 </body>
