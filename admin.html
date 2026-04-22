@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BBPS Training — Admin Dashboard</title>
+  <style>
+    :root {
+      --blue-dark: #0a2342;
+      --blue-mid:  #1a3a5c;
+      --teal:      #00a896;
+      --off-white: #f4f7fb;
+      --gray:      #6b7280;
+      --gray-light:#e5e7eb;
+      --green:     #16a34a;
+      --red:       #dc2626;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--off-white); color: #1f2937; min-height: 100vh; }
+
+    /* ─── LOGIN ─── */
+    #login-screen {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+    }
+    .login-card {
+      background: white; border-radius: 16px; padding: 48px 40px;
+      width: 100%; max-width: 400px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center;
+    }
+    .login-icon { font-size: 48px; margin-bottom: 16px; }
+    .login-card h2 { font-size: 22px; font-weight: 800; color: var(--blue-dark); margin-bottom: 6px; }
+    .login-card p  { font-size: 13px; color: var(--gray); margin-bottom: 28px; }
+    .login-card input {
+      width: 100%; padding: 12px 14px; border: 2px solid var(--gray-light);
+      border-radius: 8px; font-size: 15px; margin-bottom: 12px; outline: none;
+      transition: border-color 0.15s; text-align: center; letter-spacing: 3px;
+    }
+    .login-card input:focus { border-color: var(--teal); }
+    .login-card input.error { border-color: var(--red); }
+    .login-btn {
+      width: 100%; background: var(--blue-dark); color: white;
+      border: none; padding: 13px; border-radius: 8px;
+      font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.15s;
+    }
+    .login-btn:hover { background: var(--blue-mid); }
+    .login-error { font-size: 13px; color: var(--red); margin-top: 10px; display: none; }
+
+    /* ─── DASHBOARD ─── */
+    #dashboard { display: none; }
+
+    header {
+      background: var(--blue-dark); color: white; padding: 16px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 50;
+    }
+    header .logo { display: flex; align-items: center; gap: 12px; }
+    header .badge { background: var(--teal); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 700; }
+    header .title { font-size: 15px; font-weight: 600; }
+    .header-actions { display: flex; gap: 10px; align-items: center; }
+    .btn-export {
+      background: var(--teal); color: white; border: none;
+      padding: 8px 18px; border-radius: 6px; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .btn-export:hover { background: #008f7e; }
+    .btn-refresh {
+      background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2);
+      padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .btn-refresh:hover { background: rgba(255,255,255,0.2); }
+    .btn-logout {
+      background: transparent; color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.2); padding: 8px 14px;
+      border-radius: 6px; font-size: 13px; cursor: pointer;
+    }
+    .btn-logout:hover { color: white; border-color: rgba(255,255,255,0.5); }
+
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+    /* ─── STATS ─── */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+    @media(max-width:700px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
+    .stat-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .stat-card .stat-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gray); margin-bottom: 8px; }
+    .stat-card .stat-num { font-size: 32px; font-weight: 900; color: var(--blue-dark); line-height: 1; }
+    .stat-card .stat-sub { font-size: 12px; color: var(--gray); margin-top: 4px; }
+
+    /* ─── TABLE ─── */
+    .table-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+    .table-header h2 { font-size: 18px; font-weight: 700; color: var(--blue-dark); }
+    .search-input {
+      padding: 9px 14px; border: 2px solid var(--gray-light); border-radius: 8px;
+      font-size: 14px; outline: none; transition: border-color 0.15s; width: 240px;
+    }
+    .search-input:focus { border-color: var(--teal); }
+
+    .table-wrap { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { background: var(--blue-dark); color: white; padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
+    tbody tr { border-bottom: 1px solid var(--gray-light); transition: background 0.1s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #f0f9ff; }
+    tbody td { padding: 14px 16px; font-size: 14px; color: #374151; }
+    .badge-score { display: inline-flex; align-items: center; gap: 6px; background: #dcfce7; color: #166534; padding: 4px 10px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+    .row-num { font-size: 12px; color: var(--gray); font-weight: 500; }
+    .name-cell { font-weight: 600; color: var(--blue-dark); }
+
+    /* ─── EMPTY / LOADING ─── */
+    .empty-state { padding: 60px 20px; text-align: center; color: var(--gray); }
+    .empty-state .icon { font-size: 48px; margin-bottom: 12px; }
+    .empty-state p { font-size: 15px; }
+    .loading-state { padding: 60px 20px; text-align: center; color: var(--gray); }
+    .loading-state .spin { font-size: 32px; animation: spin 1s linear infinite; display: inline-block; margin-bottom: 12px; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    /* ─── ERROR BANNER ─── */
+    .error-banner { background: #fee2e2; border: 1px solid #fecaca; border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-size: 14px; color: #991b1b; display: none; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ LOGIN ═══════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-icon">🔐</div>
+    <h2>Admin Access</h2>
+    <p>BBPS Training — RIGHT-CLEAN Trial<br>Restricted to authorised personnel only</p>
+    <input type="password" id="pwd-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkLogin()" />
+    <button class="login-btn" onclick="checkLogin()">Sign In →</button>
+    <div class="login-error" id="login-error">Incorrect password. Please try again.</div>
+  </div>
+</div>
+
+<!-- ═══════════ DASHBOARD ═══════════ -->
+<div id="dashboard">
+  <header>
+    <div class="logo">
+      <span class="badge">RIGHT-CLEAN</span>
+      <span class="title">BBPS Training — Completion Dashboard</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn-refresh" onclick="loadData()">⟳ Refresh</button>
+      <button class="btn-export" onclick="exportCSV()">↓ Export CSV</button>
+      <button class="btn-logout" onclick="logout()">Sign Out</button>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="error-banner" id="error-banner"></div>
+
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Completions</div>
+        <div class="stat-num" id="stat-total">—</div>
+        <div class="stat-sub">10/10 verified</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Most Recent</div>
+        <div class="stat-num" id="stat-recent" style="font-size:18px;padding-top:6px;">—</div>
+        <div class="stat-sub" id="stat-recent-name">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">This Month</div>
+        <div class="stat-num" id="stat-month">—</div>
+        <div class="stat-sub" id="stat-month-label">completions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Avg. Duration</div>
+        <div class="stat-num" id="stat-avg" style="font-size:22px;padding-top:6px;">—</div>
+        <div class="stat-sub">minutes per session</div>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-header">
+      <h2>Completion Records</h2>
+      <input type="text" class="search-input" id="search-input" placeholder="Search by name…" oninput="filterTable()" />
+    </div>
+
+    <div class="table-wrap">
+      <div id="table-loading" class="loading-state">
+        <div class="spin">⏳</div>
+        <p>Loading records…</p>
+      </div>
+      <div id="table-empty" class="empty-state" style="display:none;">
+        <div class="icon">📋</div>
+        <p>No completions recorded yet.</p>
+      </div>
+      <table id="completions-table" style="display:none;">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Full Name</th>
+            <th>Score</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ════════════════════════════════════════════════
+  // CONFIG — must match index.html values exactly
+  // ════════════════════════════════════════════════
+  const CONFIG = {
+    JSONBIN_BIN_ID:  '69e89aa4aaba882197261dc1',
+    JSONBIN_API_KEY: '$2a$10$DSBK6pUTXI3c9YIfdDWKxu7Ft7bR.J8GTx6B1QzwGiGtrryeZ1/62',
+    ADMIN_PASSWORD:  'Northryde@2025'   // e.g. 'RightClean2024!'
+  };
+
+  let allRecords = [];
+
+  // ─── LOGIN ────────────────────────────────────
+  function checkLogin() {
+    const pwd = document.getElementById('pwd-input').value;
+    if (pwd === CONFIG.ADMIN_PASSWORD) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      loadData();
+    } else {
+      document.getElementById('pwd-input').classList.add('error');
+      document.getElementById('login-error').style.display = 'block';
+      document.getElementById('pwd-input').value = '';
+      setTimeout(() => document.getElementById('pwd-input').classList.remove('error'), 1500);
+    }
+  }
+
+  function logout() {
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('pwd-input').value = '';
+  }
+
+  // ─── LOAD DATA ────────────────────────────────
+  async function loadData() {
+    document.getElementById('table-loading').style.display = 'block';
+    document.getElementById('table-empty').style.display = 'none';
+    document.getElementById('completions-table').style.display = 'none';
+    document.getElementById('error-banner').style.display = 'none';
+
+    try {
+      const res = await fetch(`https://api.jsonbin.io/v3/b/${CONFIG.JSONBIN_BIN_ID}/latest`, {
+        headers: { 'X-Master-Key': CONFIG.JSONBIN_API_KEY }
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      allRecords = (data.record && data.record.completions) ? data.record.completions : [];
+      allRecords = [...allRecords].reverse(); // newest first
+      renderTable(allRecords);
+      renderStats(allRecords);
+    } catch (err) {
+      document.getElementById('table-loading').style.display = 'none';
+      const banner = document.getElementById('error-banner');
+      banner.style.display = 'block';
+      banner.textContent = `⚠️ Could not load data. Check your API credentials in the CONFIG block. Error: ${err.message}`;
+    }
+  }
+
+  // ─── RENDER TABLE ─────────────────────────────
+  function renderTable(records) {
+    document.getElementById('table-loading').style.display = 'none';
+    const body = document.getElementById('table-body');
+    body.innerHTML = '';
+
+    if (records.length === 0) {
+      document.getElementById('table-empty').style.display = 'block';
+      document.getElementById('completions-table').style.display = 'none';
+      return;
+    }
+
+    document.getElementById('completions-table').style.display = 'table';
+    document.getElementById('table-empty').style.display = 'none';
+
+    records.forEach((r, i) => {
+      const dur = r.duration_seconds
+        ? `${Math.floor(r.duration_seconds/60)}m ${r.duration_seconds%60}s`
+        : '—';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="row-num">${records.length - i}</td>
+        <td class="name-cell">${escHtml(r.name)}</td>
+        <td><span class="badge-score">✅ ${escHtml(r.score)}</span></td>
+        <td>${escHtml(r.date)}</td>
+        <td>${escHtml(r.time)}</td>
+        <td style="color:var(--gray);">${dur}</td>
+      `;
+      body.appendChild(tr);
+    });
+  }
+
+  // ─── STATS ────────────────────────────────────
+  function renderStats(records) {
+    document.getElementById('stat-total').textContent = records.length;
+
+    if (records.length > 0) {
+      const latest = records[0];
+      document.getElementById('stat-recent').textContent = latest.date;
+      document.getElementById('stat-recent-name').textContent = latest.name;
+    }
+
+    const now = new Date();
+    const thisMonth = records.filter(r => {
+      const d = new Date(r.timestamp);
+      return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+    });
+    document.getElementById('stat-month').textContent = thisMonth.length;
+    document.getElementById('stat-month-label').textContent = new Date().toLocaleString('en-AU', {month:'long'});
+
+    const withDur = records.filter(r => r.duration_seconds);
+    if (withDur.length > 0) {
+      const avg = withDur.reduce((s, r) => s + r.duration_seconds, 0) / withDur.length;
+      document.getElementById('stat-avg').textContent = `${Math.floor(avg/60)}m ${Math.round(avg%60)}s`;
+    }
+  }
+
+  // ─── SEARCH ───────────────────────────────────
+  function filterTable() {
+    const q = document.getElementById('search-input').value.toLowerCase();
+    const filtered = allRecords.filter(r => r.name.toLowerCase().includes(q));
+    renderTable(filtered);
+  }
+
+  // ─── EXPORT CSV ───────────────────────────────
+  function exportCSV() {
+    if (allRecords.length === 0) { alert('No records to export.'); return; }
+    const rows = [['#', 'Full Name', 'Score', 'Date', 'Time', 'Duration (s)', 'Timestamp']];
+    allRecords.forEach((r, i) => {
+      rows.push([
+        allRecords.length - i,
+        r.name, r.score, r.date, r.time,
+        r.duration_seconds || '',
+        r.timestamp || ''
+      ]);
+    });
+    const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `BBPS_Completions_${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+</script>
+</body>
+</html>
