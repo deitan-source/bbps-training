@@ -281,6 +281,10 @@
     .success-detail-row .value { font-weight: 600; color: var(--blue-dark); }
     .saving-indicator { font-size: 13px; color: var(--teal); margin-top: 12px; }
 
+    /* ─── QUIZ IMAGE ─── */
+    .quiz-image-wrap { border-radius: 10px; overflow: hidden; margin-bottom: 20px; background: #1a1a1a; }
+    .quiz-image-wrap img { width: 100%; max-height: 300px; object-fit: cover; display: block; }
+
     /* ─── SAVING OVERLAY ─── */
     #saving-overlay {
       display: none; position: fixed; inset: 0; background: rgba(10,35,66,0.6);
@@ -357,7 +361,7 @@
         <p class="sub">Investigator Training Module for the RIGHT-CLEAN Prospective Trial</p>
         <div class="intro-meta">
           <div class="intro-meta-item"><div class="num">~5</div><div class="lbl">Minutes</div></div>
-          <div class="intro-meta-item"><div class="num">9</div><div class="lbl">Sections</div></div>
+          <div class="intro-meta-item"><div class="num">10</div><div class="lbl">Sections</div></div>
           <div class="intro-meta-item"><div class="num">10/10</div><div class="lbl">Required</div></div>
         </div>
         <button class="btn-start" onclick="startModule()">Start Training →</button>
@@ -381,7 +385,7 @@
 
     <!-- SLIDE 1 — WHAT IS BBPS? -->
     <div class="slide" id="slide-1">
-      <span class="slide-tag">Section 1 of 9</span>
+      <span class="slide-tag">Section 1 of 10</span>
       <h2>What is the BBPS?</h2>
       <div class="divider"></div>
       <p class="lead">The Boston Bowel Preparation Scale is the world's most widely validated instrument for assessing colon cleanliness during colonoscopy. It evaluates <strong>three colonic segments</strong> separately, each scored 0–3, yielding a total of 0–9.</p>
@@ -402,7 +406,7 @@
 
     <!-- SLIDE 2 — SCORE 0 -->
     <div class="slide" id="slide-2">
-      <span class="slide-tag">Section 2 of 9 — BBPS Score 0</span>
+      <span class="slide-tag">Section 2 of 10 — BBPS Score 0</span>
       <div class="score-layout">
         <div class="score-info">
           <div class="score-header"><div class="score-badge s0">0</div><div class="score-title"><div class="definition-label">BBPS Score 0</div><h2 style="color:var(--score0);">UNPREPARED</h2></div></div>
@@ -423,7 +427,7 @@
 
     <!-- SLIDE 3 — SCORE 1 -->
     <div class="slide" id="slide-3">
-      <span class="slide-tag">Section 3 of 9 — BBPS Score 1</span>
+      <span class="slide-tag">Section 3 of 10 — BBPS Score 1</span>
       <div class="score-layout">
         <div class="score-info">
           <div class="score-header"><div class="score-badge s1">1</div><div class="score-title"><div class="definition-label">BBPS Score 1</div><h2 style="color:var(--score1);">INADEQUATE</h2></div></div>
@@ -444,7 +448,7 @@
 
     <!-- SLIDE 4 — SCORE 2 -->
     <div class="slide" id="slide-4">
-      <span class="slide-tag">Section 4 of 9 — BBPS Score 2</span>
+      <span class="slide-tag">Section 4 of 10 — BBPS Score 2</span>
       <div class="score-layout">
         <div class="score-info">
           <div class="score-header"><div class="score-badge s2">2</div><div class="score-title"><div class="definition-label">BBPS Score 2</div><h2 style="color:#ca8a04;">ADEQUATE</h2></div></div>
@@ -465,7 +469,7 @@
 
     <!-- SLIDE 5 — SCORE 3 -->
     <div class="slide" id="slide-5">
-      <span class="slide-tag">Section 5 of 9 — BBPS Score 3</span>
+      <span class="slide-tag">Section 5 of 10 — BBPS Score 3</span>
       <div class="score-layout">
         <div class="score-info">
           <div class="score-header"><div class="score-badge s3">3</div><div class="score-title"><div class="definition-label">BBPS Score 3</div><h2 style="color:var(--score3);">EXCELLENT</h2></div></div>
@@ -486,7 +490,7 @@
 
     <!-- SLIDE 6 — COMPARISON -->
     <div class="slide" id="slide-6">
-      <span class="slide-tag">Section 6 of 9</span>
+      <span class="slide-tag">Section 6 of 10</span>
       <h2>Visual Comparison — All Four Scores</h2>
       <div class="divider"></div>
       <p class="lead">Use this side-by-side reference to calibrate your scoring.</p>
@@ -499,9 +503,73 @@
       <div class="card" style="background:var(--blue-dark);color:white;padding:20px;"><p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,0.85);"><strong style="color:white;">Key discriminator:</strong> Can residue be fully suctioned away? If <strong style="color:#5eead4;">no</strong> → Score 0 or 1 (eligible). If <strong style="color:#5eead4;">yes</strong> → Score 2 or 3 (not eligible). Score 3 requires absolutely no opaque material.</p></div>
     </div>
 
-    <!-- SLIDE 7 — HOW TO ASSIGN -->
+    <!-- SLIDE 7 — BBPS SCORE 2 DEEP DIVE -->
     <div class="slide" id="slide-7">
-      <span class="slide-tag">Section 7 of 9</span>
+      <span class="slide-tag">Section 7 of 10 — Score 2 In Depth</span>
+      <h2>BBPS Score 2 — The Eligibility Threshold</h2>
+      <div class="divider"></div>
+      <p class="lead">Score 2 is the critical cut-off for RIGHT-CLEAN. Mastering the distinction between Score 1 and Score 2 is the most important skill for correct eligibility determination.</p>
+
+      <div class="card" style="margin-bottom:20px;padding:24px;">
+        <h3 style="font-size:15px;font-weight:700;color:var(--blue-dark);margin-bottom:16px;text-align:center;">The Key Discriminating Question</h3>
+        <div style="text-align:center;font-size:17px;font-weight:700;color:var(--blue-dark);padding:14px;background:var(--off-white);border-radius:10px;margin-bottom:20px;">
+          Can the residue be <em>completely</em> suctioned away?
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="background:#fff5f5;border:2px solid #fecaca;border-radius:10px;padding:18px;text-align:center;">
+            <div style="font-size:32px;font-weight:900;color:var(--score1);margin-bottom:6px;">NO</div>
+            <div style="font-size:18px;font-weight:800;color:var(--score1);margin-bottom:10px;">→ Score 1</div>
+            <p style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:12px;">Opaque liquid or stool <strong>cannot be fully cleared</strong>. Portions of mucosa remain obscured.</p>
+            <div style="background:#fee2e2;border-radius:6px;padding:8px 12px;font-size:12px;font-weight:700;color:#991b1b;">✅ ELIGIBLE for RIGHT-CLEAN</div>
+          </div>
+          <div style="background:#fefce8;border:2px solid #fde68a;border-radius:10px;padding:18px;text-align:center;">
+            <div style="font-size:32px;font-weight:900;color:#ca8a04;margin-bottom:6px;">YES</div>
+            <div style="font-size:18px;font-weight:800;color:#ca8a04;margin-bottom:10px;">→ Score 2</div>
+            <p style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:12px;">Minor residue <strong>can be fully suctioned</strong>. Entire mucosa is well seen after clearing.</p>
+            <div style="background:#dcfce7;border-radius:6px;padding:8px 12px;font-size:12px;font-weight:700;color:#166534;">🚫 NOT ELIGIBLE for RIGHT-CLEAN</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="score-layout">
+        <div class="score-info">
+          <div class="card" style="padding:16px;">
+            <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray);margin-bottom:10px;">Score 2 — Identifying Features</p>
+            <ul class="checklist">
+              <li>Entire mucosal surface <strong>well seen</strong> throughout</li>
+              <li>Turbid or cloudy liquid present — but fully removable</li>
+              <li>Small residue fragments that completely suction away</li>
+              <li>After maximal suctioning: clear view of all mucosa</li>
+              <li class="no">Residue remains after suctioning → Score 1</li>
+              <li class="no">Any mucosal area still obscured → Score 1</li>
+            </ul>
+          </div>
+          <div class="card" style="background:#fef3c7;border:1px solid #fde68a;padding:14px;">
+            <p style="font-size:13px;color:#92400e;line-height:1.6;"><strong>Clinical tip:</strong> If uncertain between Score 1 and 2, perform maximal suctioning. If all residue clears completely → Score 2 (not eligible). If any opaque residue remains → Score 1 (eligible).</p>
+          </div>
+        </div>
+        <div>
+          <div class="score-image-wrap" style="border:3px solid var(--score2);">
+            <img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-2-2.jpg"
+                 alt="BBPS Score 2 — second example"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;align-items:center;justify-content:center;height:100%;width:100%;">
+              <div><div style="font-size:40px;margin-bottom:8px;">🟡</div><div>BBPS 2 — Adequate<br>Well seen, minor suctionable residue</div></div>
+            </div>
+          </div>
+          <p class="image-caption">BBPS 2: Mucosa well visualised throughout with minor turbid liquid that can be fully suctioned away.</p>
+          <div class="card" style="margin-top:16px;padding:16px;background:var(--blue-dark);color:white;">
+            <p style="font-size:13px;color:rgba(255,255,255,0.85);line-height:1.6;text-align:center;">
+              Score <strong style="color:#f87171;">0 or 1</strong> → ELIGIBLE &nbsp;|&nbsp; Score <strong style="color:#4ade80;">2 or 3</strong> → NOT ELIGIBLE
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8 — HOW TO ASSIGN -->
+    <div class="slide" id="slide-8">
+      <span class="slide-tag">Section 8 of 10</span>
       <h2>How to Assign the BBPS</h2>
       <div class="divider"></div>
       <p class="lead">Follow this four-step workflow at every colonoscopy in the RIGHT-CLEAN trial.</p>
@@ -517,8 +585,8 @@
     </div>
 
     <!-- SLIDE 8 — QUICK REF -->
-    <div class="slide" id="slide-8">
-      <span class="slide-tag">Section 8 of 9</span>
+    <div class="slide" id="slide-9">
+      <span class="slide-tag">Section 9 of 10</span>
       <h2>Quick Reference — BBPS Scoring Guide</h2>
       <div class="divider"></div>
       <div class="card" style="padding:0;overflow:hidden;margin-bottom:24px;">
@@ -536,8 +604,8 @@
     </div>
 
     <!-- SLIDE 9 — KEY MESSAGES -->
-    <div class="slide" id="slide-9">
-      <span class="slide-tag">Section 9 of 9 — Summary</span>
+    <div class="slide" id="slide-10">
+      <span class="slide-tag">Section 10 of 10 — Summary</span>
       <h2>Key Messages</h2>
       <div class="divider"></div>
       <p class="lead">Before the knowledge check, confirm you understand these four core principles.</p>
@@ -548,7 +616,7 @@
         <div class="key-card"><div class="key-num">04</div><div><h3>Document as segment scores + total</h3><p>Always record in the format: Right / Transverse / Left = Total. Example: 1 / 2 / 3 = 6.</p></div></div>
       </div>
       <div style="background:var(--blue-dark);border-radius:12px;padding:24px;text-align:center;color:white;">
-        <p style="font-size:14px;color:rgba(255,255,255,0.7);margin-bottom:8px;">You've completed all 9 training sections.</p>
+        <p style="font-size:14px;color:rgba(255,255,255,0.7);margin-bottom:8px;">You've completed all 10 training sections.</p>
         <p style="font-size:17px;font-weight:700;margin-bottom:6px;">Ready for the knowledge check?</p>
         <p style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:20px;">You must answer all 10 questions correctly (10/10) to complete training.</p>
         <button class="btn-start" onclick="startQuiz()" style="padding:13px 36px;font-size:15px;">Start Knowledge Check →</button>
@@ -557,12 +625,13 @@
 
     <!-- QUIZ SLIDE -->
     <div class="slide" id="slide-quiz">
-      <span class="slide-tag">Knowledge Check — 10/10 Required</span>
-      <h2>BBPS Knowledge Assessment</h2>
+      <span class="slide-tag" id="quiz-slide-tag">Knowledge Check — 10/10 Required</span>
+      <h2 id="quiz-slide-h2">BBPS Knowledge Assessment</h2>
       <div class="divider"></div>
       <div class="quiz-counter">Question <span id="q-current">1</span> of <span id="q-total">10</span></div>
       <div class="quiz-progress-wrap"><div class="quiz-progress-fill" id="quiz-progress-fill" style="width:0%"></div></div>
       <div class="card" style="padding:32px;">
+        <div id="quiz-image-area"></div>
         <div class="quiz-q" id="quiz-question"></div>
         <div class="quiz-options" id="quiz-options"></div>
         <div class="quiz-feedback" id="quiz-feedback"></div>
@@ -630,7 +699,7 @@
   };
 
   // ─── STATE ────────────────────────────────────────
-  const TOTAL_SLIDES = 9;
+  const TOTAL_SLIDES = 10;
   let currentSlide = 0;
   let timerInterval = null;
   let secondsElapsed = 0;
@@ -638,30 +707,37 @@
   let quizAnswers = [];
   let currentQuestion = 0;
   let questionAnswered = false;
+  let remediationMode = false;
+  let wrongIndices = [];
+  let remediationPos = 0;
+  let lastAnswerCorrect = false;
 
   const QUESTIONS = [
     {
       q: "The Boston Bowel Preparation Scale scores each colonic segment from 0 to:",
       opts: ["5", "9", "3", "10"],
       answer: 2,
-      feedback: "Each of the three segments (right, transverse, left) is scored 0–3, giving a maximum total of 9."
+      feedback: "Each of the three segments (right, transverse, left) is scored 0–3, giving a maximum total of 9.",
+      image: null
     },
     {
-      q: "Which description best defines BBPS Score 0 (Unprepared)?",
+      q: "A colonoscopist examines the right colon and observes the following image. What BBPS score should be assigned to this segment?",
       opts: [
-        "Mucosa well seen with minor turbid liquid that can be suctioned",
-        "Entire mucosa seen with no residue or opaque liquid",
-        "Mucosa cannot be seen due to solid stool that cannot be cleared",
-        "Portions of mucosa visible but obscured by opaque liquid"
+        "Score 1 — Inadequate: portions visible, opaque liquid cannot be fully suctioned",
+        "Score 2 — Adequate: mucosa well seen with minor suctionable residue",
+        "Score 0 — Unprepared: mucosa cannot be seen due to solid stool",
+        "Score 3 — Excellent: entire mucosa seen, no residue"
       ],
       answer: 2,
-      feedback: "Score 0 = unprepared. The mucosa is completely hidden by solid or semi-solid stool that cannot be cleared."
+      feedback: "This image shows BBPS Score 0 — Unprepared. The mucosa is completely obscured by solid stool that cannot be cleared, despite washing and suctioning attempts.",
+      image: "https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-0-1.jpg"
     },
     {
       q: "In the RIGHT-CLEAN trial, a patient is ELIGIBLE for randomisation when the right colon BBPS at caecal intubation is:",
       opts: ["≥ 2", "= 0 only (unprepared)", "< 2 (score 0 or 1)", "Any score — all patients are eligible"],
       answer: 2,
-      feedback: "Eligibility requires right colon BBPS < 2, meaning score 0 OR score 1. Scores ≥ 2 mean adequate preparation and the patient is NOT eligible."
+      feedback: "Eligibility requires right colon BBPS < 2, meaning score 0 OR score 1. Scores ≥ 2 mean adequate preparation and the patient is NOT eligible.",
+      image: null
     },
     {
       q: "BBPS scoring should be performed:",
@@ -672,24 +748,27 @@
         "Before attempting caecal intubation"
       ],
       answer: 1,
-      feedback: "Always score during withdrawal and only after performing all cleaning manoeuvres. This ensures the score reflects the best achievable preparation quality."
+      feedback: "Always score during withdrawal and only after performing all cleaning manoeuvres. This ensures the score reflects the best achievable preparation quality.",
+      image: null
     },
     {
       q: "What is the maximum total BBPS score a patient can achieve?",
       opts: ["6", "12", "3", "9"],
       answer: 3,
-      feedback: "The maximum score is 9 (3+3+3), representing perfect preparation in all three colonic segments."
+      feedback: "The maximum score is 9 (3+3+3), representing perfect preparation in all three colonic segments.",
+      image: null
     },
     {
-      q: "BBPS Score 2 (Adequate) is best described as:",
+      q: "Looking at this endoscopy image, what BBPS score would you assign? What does this mean for RIGHT-CLEAN eligibility?",
       opts: [
-        "Entire mucosa seen with absolutely no residue",
-        "Solid stool preventing mucosal visualisation",
-        "Mucosa well seen with minor residue that can be fully suctioned away",
-        "Partial visibility only due to opaque liquid that cannot be suctioned"
+        "Score 0 — Eligible: mucosa completely obscured by solid stool",
+        "Score 1 — Eligible: partial visibility, opaque liquid cannot be suctioned",
+        "Score 3 — Not eligible: entire mucosa seen, no residue at all",
+        "Score 2 — Not eligible: mucosa well seen, minor residue that can be suctioned away"
       ],
-      answer: 2,
-      feedback: "Score 2 = adequate. The mucosa is WELL SEEN throughout the segment, and any minor residue or turbid liquid CAN be fully suctioned or washed away."
+      answer: 3,
+      feedback: "This image shows BBPS Score 2 — Adequate. The mucosa is well seen throughout the segment with only minor turbid liquid or residue that CAN be fully suctioned away. Score 2 ≥ 2, so this patient is NOT eligible for RIGHT-CLEAN randomisation.",
+      image: "https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-2-1.jpg"
     },
     {
       q: "An endoscopist documents a BBPS of 1 / 2 / 3. What does this mean for RIGHT-CLEAN eligibility?",
@@ -700,13 +779,20 @@
         "The documentation format is incorrect"
       ],
       answer: 1,
-      feedback: "Right colon = 1, Transverse = 2, Left = 3, Total = 6. Since the right colon score is 1 (< 2), this patient IS eligible for RIGHT-CLEAN randomisation."
+      feedback: "Right colon = 1, Transverse = 2, Left = 3, Total = 6. Since the right colon score is 1 (< 2), this patient IS eligible for RIGHT-CLEAN randomisation.",
+      image: null
     },
     {
-      q: "Which BBPS score requires that ONLY clear (non-opaque) liquid may be present?",
-      opts: ["Score 1", "Score 0", "Score 2", "Score 3"],
+      q: "This image shows a colonic segment during withdrawal. What is the correct BBPS score?",
+      opts: [
+        "Score 2 — Adequate: mucosa visible, minor suctionable residue",
+        "Score 1 — Inadequate: partial visibility with opaque liquid that cannot be suctioned",
+        "Score 0 — Unprepared: mucosa not visible due to solid stool",
+        "Score 3 — Excellent: entire mucosa seen, clear liquid only, no residue"
+      ],
       answer: 3,
-      feedback: "Score 3 (Excellent) requires the entire mucosa to be seen with no residual staining, no stool fragments, and no opaque liquid. Only small amounts of clear liquid are permitted."
+      feedback: "Score 3 — Excellent. The entire mucosal surface is clearly visible with no residual staining, no stool fragments, and no opaque liquid. Only small amounts of clear liquid may be present at Score 3.",
+      image: "https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-3-1.jpg"
     },
     {
       q: "A patient has BBPS segment scores: right colon = 2, transverse = 3, left colon = 3. Regarding RIGHT-CLEAN eligibility:",
@@ -717,18 +803,20 @@
         "Not eligible — total score must be 9 for eligibility assessment"
       ],
       answer: 2,
-      feedback: "Eligibility is determined solely by the RIGHT COLON score. Right colon = 2 means adequate preparation — this patient is NOT eligible, regardless of total score."
+      feedback: "Eligibility is determined solely by the RIGHT COLON score. Right colon = 2 means adequate preparation — this patient is NOT eligible, regardless of total score.",
+      image: null
     },
     {
-      q: "What is the correct moment to record the right colon BBPS for RIGHT-CLEAN eligibility determination?",
+      q: "After maximal washing and suctioning, the right colon at caecal intubation looks like this image. What is the correct BBPS score, and is this patient eligible for RIGHT-CLEAN?",
       opts: [
-        "After completing withdrawal and exiting the rectum",
-        "Before insertion, based on the patient's bowel prep history",
-        "At caecal intubation, after washing and suctioning the right colon",
-        "During the informed consent process"
+        "Score 0 — Eligible: mucosa completely obscured by solid stool",
+        "Score 2 — Not eligible: mucosa well seen, residue can be suctioned",
+        "Score 1 — Eligible: portions of mucosa visible, opaque liquid cannot be fully suctioned",
+        "Score 3 — Not eligible: entire mucosa seen with no residue"
       ],
       answer: 2,
-      feedback: "The right colon BBPS must be recorded at caecal intubation, after all washing and suctioning attempts. This score determines eligibility for randomisation before withdrawal begins."
+      feedback: "Score 1 — Inadequate. Portions of the mucosa are visible, but opaque brown liquid cannot be fully suctioned away. Score 1 < 2, so this patient IS eligible for RIGHT-CLEAN randomisation.",
+      image: "https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-1-1.jpg"
     }
   ];
 
@@ -835,23 +923,55 @@
 
   // ─── QUIZ ────────────────────────────────────────
   function startQuiz() {
+    remediationMode = false;
+    wrongIndices = [];
+    remediationPos = 0;
     currentQuestion = 0;
     quizAnswers = [];
+    document.getElementById('quiz-slide-tag').textContent = 'Knowledge Check — 10/10 Required';
+    document.getElementById('quiz-slide-h2').textContent = 'BBPS Knowledge Assessment';
     document.getElementById('q-total').textContent = QUESTIONS.length;
     showSlide('quiz');
     renderQuestion();
   }
 
+  function startRemediation() {
+    remediationMode = true;
+    remediationPos = 0;
+    wrongIndices = quizAnswers.map((a, i) => a.correct ? null : i).filter(i => i !== null);
+    document.getElementById('quiz-slide-tag').textContent = 'Remediation — Wrong Answers Only';
+    document.getElementById('quiz-slide-h2').textContent = 'Answer Your Wrong Questions';
+    showSlide('quiz');
+    renderQuestion();
+  }
+
   function renderQuestion() {
-    const qData = QUESTIONS[currentQuestion];
-    document.getElementById('q-current').textContent = currentQuestion + 1;
-    document.getElementById('quiz-progress-fill').style.width = `${(currentQuestion / QUESTIONS.length) * 100}%`;
+    const isRem = remediationMode;
+    const qData = isRem ? QUESTIONS[wrongIndices[remediationPos]] : QUESTIONS[currentQuestion];
+
+    if (isRem) {
+      document.getElementById('q-current').textContent = remediationPos + 1;
+      document.getElementById('q-total').textContent = wrongIndices.length;
+      document.getElementById('quiz-progress-fill').style.width = `${(remediationPos / wrongIndices.length) * 100}%`;
+    } else {
+      document.getElementById('q-current').textContent = currentQuestion + 1;
+      document.getElementById('q-total').textContent = QUESTIONS.length;
+      document.getElementById('quiz-progress-fill').style.width = `${(currentQuestion / QUESTIONS.length) * 100}%`;
+    }
+
     document.getElementById('quiz-question').textContent = qData.q;
     document.getElementById('quiz-feedback').className = 'quiz-feedback';
     document.getElementById('quiz-feedback').innerHTML = '';
     document.getElementById('btn-next-q').className = 'btn-next-q';
-    document.getElementById('btn-next-q').textContent = currentQuestion < QUESTIONS.length - 1 ? 'Next Question →' : 'See Results →';
     questionAnswered = false;
+    lastAnswerCorrect = false;
+
+    const imageArea = document.getElementById('quiz-image-area');
+    if (qData.image) {
+      imageArea.innerHTML = `<div class="quiz-image-wrap"><img src="${qData.image}" alt="Endoscopy image for scoring" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/><div class="img-fallback" style="display:none;align-items:center;justify-content:center;min-height:200px;background:#1a1a1a;color:rgba(255,255,255,0.5);font-size:14px;text-align:center;padding:20px;"><div>Endoscopy image could not be loaded</div></div></div>`;
+    } else {
+      imageArea.innerHTML = '';
+    }
 
     const letters = ['A', 'B', 'C', 'D'];
     const optionsEl = document.getElementById('quiz-options');
@@ -868,9 +988,13 @@
   function selectAnswer(idx) {
     if (questionAnswered) return;
     questionAnswered = true;
-    const qData = QUESTIONS[currentQuestion];
+    const qData = remediationMode ? QUESTIONS[wrongIndices[remediationPos]] : QUESTIONS[currentQuestion];
     const correct = idx === qData.answer;
-    quizAnswers.push({ correct, selected: idx, correct_idx: qData.answer, question: qData.q });
+    lastAnswerCorrect = correct;
+
+    if (!remediationMode) {
+      quizAnswers.push({ correct, selected: idx, correct_idx: qData.answer, question: qData.q });
+    }
 
     document.querySelectorAll('.quiz-opt').forEach((el, i) => {
       el.classList.add('locked');
@@ -881,13 +1005,37 @@
     const fb = document.getElementById('quiz-feedback');
     fb.className = 'quiz-feedback show ' + (correct ? 'correct' : 'wrong');
     fb.innerHTML = `<strong>${correct ? '✅ Correct!' : '❌ Incorrect.'}</strong> ${qData.feedback}`;
-    document.getElementById('btn-next-q').className = 'btn-next-q show';
+
+    const nextBtn = document.getElementById('btn-next-q');
+    if (remediationMode) {
+      nextBtn.textContent = !correct ? '← Try Again' : (remediationPos < wrongIndices.length - 1 ? 'Next Question →' : 'Complete Training →');
+    } else {
+      nextBtn.textContent = currentQuestion < QUESTIONS.length - 1 ? 'Next Question →' : 'See Results →';
+    }
+    nextBtn.className = 'btn-next-q show';
   }
 
   function nextQuestion() {
-    currentQuestion++;
-    if (currentQuestion < QUESTIONS.length) renderQuestion();
-    else showResults();
+    if (remediationMode) {
+      if (!lastAnswerCorrect) {
+        questionAnswered = false;
+        lastAnswerCorrect = false;
+        document.querySelectorAll('.quiz-opt').forEach(el => el.classList.remove('correct', 'wrong', 'locked'));
+        document.getElementById('quiz-feedback').className = 'quiz-feedback';
+        document.getElementById('btn-next-q').className = 'btn-next-q';
+        return;
+      }
+      remediationPos++;
+      if (remediationPos < wrongIndices.length) {
+        renderQuestion();
+      } else {
+        saveCompletion(10);
+      }
+    } else {
+      currentQuestion++;
+      if (currentQuestion < QUESTIONS.length) renderQuestion();
+      else showResults();
+    }
   }
 
   // ─── RESULTS ─────────────────────────────────────
@@ -901,10 +1049,10 @@
     document.getElementById('results-score').textContent = `${score}/10`;
     document.getElementById('results-message').textContent = isPerfect
       ? '🎉 Perfect Score — Training Complete!'
-      : `❌ ${score}/10 — Retake Required`;
+      : `❌ ${score}/10 — Answer Wrong Questions to Complete`;
     document.getElementById('results-sub').textContent = isPerfect
       ? 'Outstanding! You have demonstrated a complete understanding of the BBPS. Your completion is being recorded now.'
-      : `You answered ${score} out of 10 questions correctly. A perfect score of 10/10 is required. Please review the training material carefully and retake the assessment.`;
+      : `You answered ${score} out of 10 questions correctly. Please answer the ${10 - score} wrong question${10 - score !== 1 ? 's' : ''} correctly to complete your certification.`;
 
     const breakdown = document.getElementById('results-breakdown');
     breakdown.innerHTML = '';
@@ -922,7 +1070,7 @@
     } else {
       actionsEl.innerHTML = `
         <button class="btn-review" onclick="reviewTraining()">← Review Training</button>
-        <button class="btn-retake" onclick="startQuiz()">Retake Assessment →</button>
+        <button class="btn-retake" onclick="startRemediation()">Answer Wrong Questions →</button>
       `;
     }
 
