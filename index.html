@@ -396,7 +396,7 @@
       </div>
       <div class="info-row" style="margin-bottom:16px;">
         <div class="info-block"><h3>🏆 Total Score Range</h3><p><strong>0</strong> = Completely unprepared<br><strong>9</strong> = Perfectly prepared (best)</p><p style="margin-top:8px;">Reported as segment scores + total, e.g. <strong>1/2/3 = 6</strong></p></div>
-        <div class="info-block"><h3>📋 RIGHT-CLEAN Eligibility</h3><p>Eligibility is determined by the <strong>right colon BBPS at caecal intubation</strong>.</p><p style="margin-top:8px;"><strong>Score &lt; 2</strong> (0 or 1) → <span style="color:var(--eligible);font-weight:700;">ELIGIBLE</span><br><strong>Score ≥ 2</strong> → <span style="color:var(--not-eligible);font-weight:700;">NOT eligible</span></p></div>
+        <div class="info-block"><h3>📋 RIGHT-CLEAN Eligibility</h3><p>Eligibility is determined by the <strong>right colon BBPS at caecal intubation</strong>.</p><p style="margin-top:8px;"><strong>Score ≤ 2</strong> (0, 1 or 2) → <span style="color:var(--eligible);font-weight:700;">ELIGIBLE</span><br><strong>Score 3 only</strong> → <span style="color:var(--not-eligible);font-weight:700;">NOT eligible</span></p></div>
       </div>
       <div class="info-row">
         <div class="info-block"><h3>⏱️ When to Score</h3><ul><li>Always score <strong>on withdrawal</strong></li><li>After washing &amp; suctioning each segment</li><li>Perform all cleaning before scoring</li><li>Always aim for the highest possible score</li></ul></div>
@@ -454,7 +454,7 @@
           <div class="score-header"><div class="score-badge s2">2</div><div class="score-title"><div class="definition-label">BBPS Score 2</div><h2 style="color:#ca8a04;">ADEQUATE</h2></div></div>
           <div class="score-definition" style="border-color:var(--score2);">Mucosa of the entire segment is <strong>well seen</strong>, with only a minor amount of turbid liquid or small residue that <strong>can be suctioned or washed away</strong>.</div>
           <div class="card" style="padding:16px;"><p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray);margin-bottom:10px;">Clinical Indicators</p><ul class="checklist"><li>Mucosa clearly visible in its entirety</li><li>Minor turbid liquid or small fragments</li><li>Residue <em>can</em> be fully suctioned away</li><li>All folds can be examined</li></ul></div>
-          <div class="eligibility-banner not-eligible"><span style="font-size:18px;">🚫</span><div>Score ≥ 2 in right colon = <strong>NOT ELIGIBLE</strong> for RIGHT-CLEAN</div></div>
+          <div class="eligibility-banner eligible"><span style="font-size:18px;">✅</span><div>Score 2 in right colon = <strong>ELIGIBLE</strong> for RIGHT-CLEAN randomisation</div></div>
         </div>
         <div>
           <div class="score-image-wrap" style="border: 3px solid var(--score2);">
@@ -462,7 +462,7 @@
             <div class="img-fallback" style="display:none;align-items:center;justify-content:center;height:100%;width:100%;"><div><div style="font-size:40px;margin-bottom:8px;">🟡</div><div>BBPS 2 — Adequate<br>Mucosa visible, minor suctionable residue</div></div></div>
           </div>
           <p class="image-caption">BBPS 2: Full mucosal visibility with minor turbid liquid. Source: Endoscopy Campus</p>
-          <div class="card" style="margin-top:16px;padding:16px;background:#fefce8;border:1px solid #fef08a;"><p style="font-size:13px;color:#713f12;line-height:1.6;"><strong>Critical threshold:</strong> Score 2 = adequate preparation. RIGHT-CLEAN targets preparation <em>below</em> this threshold.</p></div>
+          <div class="card" style="margin-top:16px;padding:16px;background:#dcfce7;border:1px solid #bbf7d0;"><p style="font-size:13px;color:#166534;line-height:1.6;"><strong>Eligibility note:</strong> Despite adequate preparation, right colon Score 2 is <em>eligible</em> for RIGHT-CLEAN randomisation. Only Score 3 (excellent preparation) is not eligible.</p></div>
         </div>
       </div>
     </div>
@@ -475,7 +475,7 @@
           <div class="score-header"><div class="score-badge s3">3</div><div class="score-title"><div class="definition-label">BBPS Score 3</div><h2 style="color:var(--score3);">EXCELLENT</h2></div></div>
           <div class="score-definition" style="border-color:var(--score3);">Entire mucosa of the segment is <strong>well seen</strong> with <strong>no residual staining, stool fragments, or opaque liquid</strong>. Only small amounts of clear liquid may be present.</div>
           <div class="card" style="padding:16px;"><p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray);margin-bottom:10px;">Clinical Indicators</p><ul class="checklist"><li>Entire mucosa visible without exception</li><li>No stool residue or staining</li><li>No opaque or coloured liquid</li><li>Clear liquid only (if any fluid present)</li></ul></div>
-          <div class="eligibility-banner not-eligible"><span style="font-size:18px;">🚫</span><div>Score ≥ 2 in right colon = <strong>NOT ELIGIBLE</strong> for RIGHT-CLEAN</div></div>
+          <div class="eligibility-banner not-eligible"><span style="font-size:18px;">🚫</span><div>Score 3 in right colon = <strong>NOT ELIGIBLE</strong> for RIGHT-CLEAN randomisation</div></div>
         </div>
         <div>
           <div class="score-image-wrap" style="border: 3px solid var(--score3);">
@@ -497,35 +497,35 @@
       <div class="comparison-grid" style="margin-bottom:24px;">
         <div class="comparison-card"><div class="comp-img"><img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-0-1.jpg" alt="BBPS 0" onerror="this.parentNode.style.background='#dc2626';this.style.display='none';" /></div><div class="comp-body"><div class="comp-score-row"><div class="comp-score-num" style="background:var(--score0);">0</div><div class="comp-score-name">UNPREPARED</div></div><div class="comp-desc">Mucosa not seen. Solid stool cannot be cleared.</div><div class="comp-elig yes">✅ ELIGIBLE (score &lt; 2)</div></div></div>
         <div class="comparison-card"><div class="comp-img"><img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-1-1.jpg" alt="BBPS 1" onerror="this.parentNode.style.background='#f97316';this.style.display='none';" /></div><div class="comp-body"><div class="comp-score-row"><div class="comp-score-num" style="background:var(--score1);">1</div><div class="comp-score-name">INADEQUATE</div></div><div class="comp-desc">Portions visible. Opaque liquid cannot be fully suctioned.</div><div class="comp-elig yes">✅ ELIGIBLE (score &lt; 2)</div></div></div>
-        <div class="comparison-card"><div class="comp-img"><img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-2-1.jpg" alt="BBPS 2" onerror="this.parentNode.style.background='#ca8a04';this.style.display='none';" /></div><div class="comp-body"><div class="comp-score-row"><div class="comp-score-num" style="background:var(--score2);">2</div><div class="comp-score-name">ADEQUATE</div></div><div class="comp-desc">Mucosa well seen. Minor residue that can be suctioned.</div><div class="comp-elig no">🚫 NOT ELIGIBLE (score ≥ 2)</div></div></div>
+        <div class="comparison-card"><div class="comp-img"><img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-2-1.jpg" alt="BBPS 2" onerror="this.parentNode.style.background='#ca8a04';this.style.display='none';" /></div><div class="comp-body"><div class="comp-score-row"><div class="comp-score-num" style="background:var(--score2);">2</div><div class="comp-score-name">ADEQUATE</div></div><div class="comp-desc">Mucosa well seen. Minor residue that can be suctioned.</div><div class="comp-elig yes">✅ ELIGIBLE (score ≤ 2)</div></div></div>
         <div class="comparison-card"><div class="comp-img"><img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-3-1.jpg" alt="BBPS 3" onerror="this.parentNode.style.background='#16a34a';this.style.display='none';" /></div><div class="comp-body"><div class="comp-score-row"><div class="comp-score-num" style="background:var(--score3);">3</div><div class="comp-score-name">EXCELLENT</div></div><div class="comp-desc">Entire mucosa seen. No residue. Clear liquid only.</div><div class="comp-elig no">🚫 NOT ELIGIBLE (score ≥ 2)</div></div></div>
       </div>
-      <div class="card" style="background:var(--blue-dark);color:white;padding:20px;"><p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,0.85);"><strong style="color:white;">Key discriminator:</strong> Can residue be fully suctioned away? If <strong style="color:#5eead4;">no</strong> → Score 0 or 1 (eligible). If <strong style="color:#5eead4;">yes</strong> → Score 2 or 3 (not eligible). Score 3 requires absolutely no opaque material.</p></div>
+      <div class="card" style="background:var(--blue-dark);color:white;padding:20px;"><p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,0.85);"><strong style="color:white;">Key discriminator:</strong> Is the entire mucosa seen with <em>no</em> opaque material whatsoever? If <strong style="color:#f87171;">no</strong> (any opaque residue present) → Score 0, 1 or 2 (<strong style="color:#5eead4;">eligible</strong>). If <strong style="color:#4ade80;">yes</strong> (clear liquid only) → Score 3 (<strong style="color:#f87171;">not eligible</strong>).</p></div>
     </div>
 
     <!-- SLIDE 7 — BBPS SCORE 2 DEEP DIVE -->
     <div class="slide" id="slide-7">
       <span class="slide-tag">Section 7 of 10 — Score 2 In Depth</span>
-      <h2>BBPS Score 2 — The Eligibility Threshold</h2>
+      <h2>BBPS Score 2 — Eligible Preparation</h2>
       <div class="divider"></div>
-      <p class="lead">Score 2 is the critical cut-off for RIGHT-CLEAN. Mastering the distinction between Score 1 and Score 2 is the most important skill for correct eligibility determination.</p>
+      <p class="lead">In the RIGHT-CLEAN trial, scores 0, 1, and 2 are all eligible for randomisation. <strong>Only Score 3 excludes a patient.</strong> Understanding Score 2 vs Score 3 is the most critical distinction.</p>
 
       <div class="card" style="margin-bottom:20px;padding:24px;">
         <h3 style="font-size:15px;font-weight:700;color:var(--blue-dark);margin-bottom:16px;text-align:center;">The Key Discriminating Question</h3>
         <div style="text-align:center;font-size:17px;font-weight:700;color:var(--blue-dark);padding:14px;background:var(--off-white);border-radius:10px;margin-bottom:20px;">
-          Can the residue be <em>completely</em> suctioned away?
+          Is the mucosa entirely visible with <em>no</em> opaque material at all?
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-          <div style="background:#fff5f5;border:2px solid #fecaca;border-radius:10px;padding:18px;text-align:center;">
-            <div style="font-size:32px;font-weight:900;color:var(--score1);margin-bottom:6px;">NO</div>
-            <div style="font-size:18px;font-weight:800;color:var(--score1);margin-bottom:10px;">→ Score 1</div>
-            <p style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:12px;">Opaque liquid or stool <strong>cannot be fully cleared</strong>. Portions of mucosa remain obscured.</p>
+          <div style="background:#fefce8;border:2px solid #fde68a;border-radius:10px;padding:18px;text-align:center;">
+            <div style="font-size:32px;font-weight:900;color:#ca8a04;margin-bottom:6px;">NO</div>
+            <div style="font-size:18px;font-weight:800;color:#ca8a04;margin-bottom:10px;">→ Score 0, 1 or 2</div>
+            <p style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:12px;">Some opaque or turbid material present. Score depends on how much and whether it can be cleared.</p>
             <div style="background:#fee2e2;border-radius:6px;padding:8px 12px;font-size:12px;font-weight:700;color:#991b1b;">✅ ELIGIBLE for RIGHT-CLEAN</div>
           </div>
-          <div style="background:#fefce8;border:2px solid #fde68a;border-radius:10px;padding:18px;text-align:center;">
-            <div style="font-size:32px;font-weight:900;color:#ca8a04;margin-bottom:6px;">YES</div>
-            <div style="font-size:18px;font-weight:800;color:#ca8a04;margin-bottom:10px;">→ Score 2</div>
-            <p style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:12px;">Minor residue <strong>can be fully suctioned</strong>. Entire mucosa is well seen after clearing.</p>
+          <div style="background:#f0fdf4;border:2px solid #bbf7d0;border-radius:10px;padding:18px;text-align:center;">
+            <div style="font-size:32px;font-weight:900;color:var(--score3);margin-bottom:6px;">YES</div>
+            <div style="font-size:18px;font-weight:800;color:var(--score3);margin-bottom:10px;">→ Score 3 only</div>
+            <p style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:12px;">Entire mucosa seen with <strong>no opaque material whatsoever</strong>. Clear liquid only (if any fluid).</p>
             <div style="background:#dcfce7;border-radius:6px;padding:8px 12px;font-size:12px;font-weight:700;color:#166534;">🚫 NOT ELIGIBLE for RIGHT-CLEAN</div>
           </div>
         </div>
@@ -537,30 +537,30 @@
             <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray);margin-bottom:10px;">Score 2 — Identifying Features</p>
             <ul class="checklist">
               <li>Entire mucosal surface <strong>well seen</strong> throughout</li>
-              <li>Turbid or cloudy liquid present — but fully removable</li>
-              <li>Small residue fragments that completely suction away</li>
+              <li>Minor turbid or cloudy liquid present</li>
+              <li>Residue fragments that can be fully suctioned away</li>
               <li>After maximal suctioning: clear view of all mucosa</li>
-              <li class="no">Residue remains after suctioning → Score 1</li>
-              <li class="no">Any mucosal area still obscured → Score 1</li>
+              <li class="no">No opaque material at all → that is Score 3 (not eligible)</li>
+              <li class="no">Score 3 = only clear liquid permitted</li>
             </ul>
           </div>
           <div class="card" style="background:#fef3c7;border:1px solid #fde68a;padding:14px;">
-            <p style="font-size:13px;color:#92400e;line-height:1.6;"><strong>Clinical tip:</strong> If uncertain between Score 1 and 2, perform maximal suctioning. If all residue clears completely → Score 2 (not eligible). If any opaque residue remains → Score 1 (eligible).</p>
+            <p style="font-size:13px;color:#92400e;line-height:1.6;"><strong>Clinical tip:</strong> Score 2 is NOW ELIGIBLE. If uncertain between Score 2 and 3: is any turbid or opaque residue present? If yes → Score 2 (eligible). Only a completely clear, opaque-free preparation → Score 3 (not eligible).</p>
           </div>
         </div>
         <div>
           <div class="score-image-wrap" style="border:3px solid var(--score2);">
             <img src="https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-2-2.jpg"
-                 alt="BBPS Score 2 — second example"
+                 alt="BBPS Score 2"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
             <div class="img-fallback" style="display:none;align-items:center;justify-content:center;height:100%;width:100%;">
               <div><div style="font-size:40px;margin-bottom:8px;">🟡</div><div>BBPS 2 — Adequate<br>Well seen, minor suctionable residue</div></div>
             </div>
           </div>
-          <p class="image-caption">BBPS 2: Mucosa well visualised throughout with minor turbid liquid that can be fully suctioned away.</p>
+          <p class="image-caption">BBPS 2: Mucosa well visualised with minor turbid liquid — eligible for RIGHT-CLEAN.</p>
           <div class="card" style="margin-top:16px;padding:16px;background:var(--blue-dark);color:white;">
             <p style="font-size:13px;color:rgba(255,255,255,0.85);line-height:1.6;text-align:center;">
-              Score <strong style="color:#f87171;">0 or 1</strong> → ELIGIBLE &nbsp;|&nbsp; Score <strong style="color:#4ade80;">2 or 3</strong> → NOT ELIGIBLE
+              Score <strong style="color:#f87171;">0, 1 or 2</strong> → ELIGIBLE &nbsp;|&nbsp; Score <strong style="color:#4ade80;">3 only</strong> → NOT ELIGIBLE
             </p>
           </div>
         </div>
@@ -581,7 +581,7 @@
           <div class="workflow-step"><div class="step-num">4</div><div class="step-content"><h3>Sum the Segments &amp; Document</h3><p>Total BBPS = right + transverse + left (range 0–9).</p><div style="margin-top:10px;background:var(--off-white);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--blue-dark);">Example: Right=<strong>1</strong>, Transverse=<strong>2</strong>, Left=<strong>3</strong> → <strong>1/2/3 = 6</strong></div></div></div>
         </div>
       </div>
-      <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:10px;padding:16px 20px;"><p style="font-size:14px;color:#92400e;line-height:1.7;"><strong>⚠️ Important:</strong> Right colon score at caecal intubation = eligibility determinant. Score 0 or 1 → eligible. Score 2 or 3 → not eligible.</p></div>
+      <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:10px;padding:16px 20px;"><p style="font-size:14px;color:#92400e;line-height:1.7;"><strong>⚠️ Important:</strong> Right colon score at caecal intubation = eligibility determinant. Score 0, 1 or 2 → eligible. Score 3 only → not eligible.</p></div>
     </div>
 
     <!-- SLIDE 8 — QUICK REF -->
@@ -595,7 +595,7 @@
           <tbody>
             <tr><td><span class="score-pill" style="background:var(--score0);">0</span></td><td><strong>Unprepared</strong></td><td>Not seen at all</td><td>Solid stool — cannot be cleared</td><td><span style="color:var(--eligible);font-weight:700;">✅ Eligible</span></td></tr>
             <tr><td><span class="score-pill" style="background:var(--score1);">1</span></td><td><strong>Inadequate</strong></td><td>Partially seen</td><td>Opaque liquid — cannot fully suction</td><td><span style="color:var(--eligible);font-weight:700;">✅ Eligible</span></td></tr>
-            <tr><td><span class="score-pill" style="background:var(--score2);">2</span></td><td><strong>Adequate</strong></td><td>Well seen</td><td>Minor residue — can be suctioned</td><td><span style="color:var(--not-eligible);font-weight:700;">🚫 Not eligible</span></td></tr>
+            <tr><td><span class="score-pill" style="background:var(--score2);">2</span></td><td><strong>Adequate</strong></td><td>Well seen</td><td>Minor residue — can be suctioned</td><td><span style="color:var(--eligible);font-weight:700;">✅ Eligible</span></td></tr>
             <tr><td><span class="score-pill" style="background:var(--score3);">3</span></td><td><strong>Excellent</strong></td><td>Entire mucosa seen</td><td>None — clear liquid only</td><td><span style="color:var(--not-eligible);font-weight:700;">🚫 Not eligible</span></td></tr>
           </tbody>
         </table>
@@ -612,7 +612,7 @@
       <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
         <div class="key-card"><div class="key-num">01</div><div><h3>Score each segment separately — 0 to 3</h3><p>Right colon, transverse colon, and left colon are each scored independently. Never assign a single score for the whole colon.</p></div></div>
         <div class="key-card"><div class="key-num">02</div><div><h3>Always score on withdrawal, after washing &amp; suctioning</h3><p>Complete all cleaning manoeuvres first. Scoring happens during withdrawal only.</p></div></div>
-        <div class="key-card"><div class="key-num">03</div><div><h3>Right colon BBPS &lt; 2 = ELIGIBLE for RIGHT-CLEAN</h3><p>Score 0 or 1 in the right colon at caecal intubation → eligible for randomisation. Score ≥ 2 → not eligible.</p></div></div>
+        <div class="key-card"><div class="key-num">03</div><div><h3>Right colon BBPS ≤ 2 = ELIGIBLE for RIGHT-CLEAN</h3><p>Score 0, 1 or 2 in the right colon at caecal intubation → eligible for randomisation. Score 3 only → not eligible.</p></div></div>
         <div class="key-card"><div class="key-num">04</div><div><h3>Document as segment scores + total</h3><p>Always record in the format: Right / Transverse / Left = Total. Example: 1 / 2 / 3 = 6.</p></div></div>
       </div>
       <div style="background:var(--blue-dark);border-radius:12px;padding:24px;text-align:center;color:white;">
@@ -734,9 +734,9 @@
     },
     {
       q: "In the RIGHT-CLEAN trial, a patient is ELIGIBLE for randomisation when the right colon BBPS at caecal intubation is:",
-      opts: ["≥ 2", "= 0 only (unprepared)", "< 2 (score 0 or 1)", "Any score — all patients are eligible"],
+      opts: ["= 3 only (excellent preparation)", "= 0 only (unprepared)", "≤ 2 (score 0, 1 or 2)", "Any score — all patients are eligible"],
       answer: 2,
-      feedback: "Eligibility requires right colon BBPS < 2, meaning score 0 OR score 1. Scores ≥ 2 mean adequate preparation and the patient is NOT eligible.",
+      feedback: "Eligibility requires right colon BBPS ≤ 2, meaning score 0, 1 OR 2. Only Score 3 (excellent preparation) means the patient is NOT eligible.",
       image: null
     },
     {
@@ -763,11 +763,11 @@
       opts: [
         "Score 0 — Eligible: mucosa completely obscured by solid stool",
         "Score 1 — Eligible: partial visibility, opaque liquid cannot be suctioned",
-        "Score 3 — Not eligible: entire mucosa seen, no residue at all",
-        "Score 2 — Not eligible: mucosa well seen, minor residue that can be suctioned away"
+        "Score 3 — Not eligible: entire mucosa seen, no opaque material at all",
+        "Score 2 — Eligible: mucosa well seen, minor residue that can be suctioned away"
       ],
       answer: 3,
-      feedback: "This image shows BBPS Score 2 — Adequate. The mucosa is well seen throughout the segment with only minor turbid liquid or residue that CAN be fully suctioned away. Score 2 ≥ 2, so this patient is NOT eligible for RIGHT-CLEAN randomisation.",
+      feedback: "This image shows BBPS Score 2 — Adequate. The mucosa is well seen with only minor turbid liquid that CAN be suctioned away. In the RIGHT-CLEAN trial, Score 2 ≤ 2, so this patient IS eligible for randomisation.",
       image: "https://www.endoscopy-campus.com/wp-content/uploads/Befund-entsprechend-BBPS-2-1.jpg"
     },
     {
@@ -797,13 +797,13 @@
     {
       q: "A patient has BBPS segment scores: right colon = 2, transverse = 3, left colon = 3. Regarding RIGHT-CLEAN eligibility:",
       opts: [
-        "Eligible — total score is 8",
-        "Eligible — transverse and left colon scores are excellent",
-        "Not eligible — right colon score is ≥ 2",
-        "Not eligible — total score must be 9 for eligibility assessment"
+        "Not eligible — right colon score must be 0 or 1 only",
+        "Eligible — right colon score is 2, which is ≤ 2",
+        "Not eligible — total score is too high for eligibility",
+        "Not eligible — transverse and left colon scores are 3"
       ],
-      answer: 2,
-      feedback: "Eligibility is determined solely by the RIGHT COLON score. Right colon = 2 means adequate preparation — this patient is NOT eligible, regardless of total score.",
+      answer: 1,
+      feedback: "In the RIGHT-CLEAN trial, eligibility requires right colon BBPS ≤ 2. Right colon = 2 means this patient IS eligible for randomisation. Only right colon Score 3 would make a patient ineligible.",
       image: null
     },
     {
